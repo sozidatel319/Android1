@@ -1,18 +1,382 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:id="@+id/main"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:divider="@drawable/clouds"
+    android:gravity="center"
+    android:orientation="vertical"
+    >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/clouds">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/city"
+            android:textSize="36sp"
+            android:textColor="#ffffff"
+            ></TextView>
+
+        <TextView
+            android:id="@+id/weather_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/weather"
+            android:textSize="24sp"
+            android:textColor="#ffffff"
+            ></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0°C"
+            android:textSize="40sp"
+            android:textColor="#ffffff"
+            ></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Воскресенье"
+            android:textSize="25sp"
+            android:textColor="#ffffff"
+            ></TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="#03A9F4">
+        >
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="9 10 11 12 13 14 15 16 17 18 19 20 21"
+                    android:textSize="24sp"/>
+            </TableRow>
+            <TableRow>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30sp"
+                        android:layout_height="30sp"
+                        android:layout_weight="30"
+                        android:background="#2196F3"
+                        android:src="@drawable/cloudandsun"
+                        tools:src="@drawable/cloudandsun" />
+                <ImageView
+                    android:layout_weight="30"
+                    android:layout_height="30dp"
+                    android:layout_width="30dp"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun"
+                    ></ImageView>
+                <ImageView
+                    android:layout_weight="30"
+                    android:layout_height="30dp"
+                    android:layout_width="30dp"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun"
+                    ></ImageView>
+                <ImageView
+                    android:layout_weight="30"
+                    android:layout_height="30dp"
+                    android:layout_width="30dp"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun"></ImageView>
+                <ImageView
+                    android:layout_weight="30"
+                    android:layout_height="30dp"
+                    android:layout_width="30dp"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun"></ImageView>
+                    <ImageView
+                        android:layout_weight="30"
+                        android:layout_height="30dp"
+                        android:layout_width="30dp"
+                        android:src="@drawable/cloudandsun"
+                        tools:src="@drawable/cloudandsun"></ImageView>
+                    <ImageView
+                        android:layout_weight="30"
+                        android:layout_height="30dp"
+                        android:layout_width="30dp"
+                        android:src="@drawable/cloudandsun"
+                        tools:src="@drawable/cloudandsun"></ImageView>
+                    <ImageView
+                        android:layout_weight="30"
+                        android:layout_height="30dp"
+                        android:layout_width="30dp"
+                        android:src="@drawable/cloudandsun"
+                        tools:src="@drawable/cloudandsun"></ImageView>
+                    <ImageView
+                        android:layout_weight="30"
+                        android:layout_height="30dp"
+                        android:layout_width="30dp"
+                        android:src="@drawable/cloudandsun"
+                        tools:src="@drawable/cloudandsun"></ImageView>
+                    <ImageView
+                        android:layout_weight="30"
+                        android:layout_height="30dp"
+                        android:layout_width="30dp"
+                        android:src="@drawable/cloudandsun"
+                        tools:src="@drawable/cloudandsun"></ImageView>
+                    <ImageView
+                        android:layout_weight="30"
+                        android:layout_height="30dp"
+                        android:layout_width="30dp"
+                        android:src="@drawable/cloudandsun"
+                        tools:src="@drawable/cloudandsun"></ImageView>
+                    <ImageView
+                        android:layout_weight="30"
+                        android:layout_height="30dp"
+                        android:layout_width="30dp"
+                        android:src="@drawable/cloudandsun"
+                        tools:src="@drawable/cloudandsun"></ImageView>
+                    <ImageView
+                        android:layout_weight="30"
+                        android:layout_height="30dp"
+                        android:layout_width="30dp"
+                        android:src="@drawable/cloudandsun"
+                        tools:src="@drawable/cloudandsun"></ImageView>
+                    <ImageView
+                        android:layout_weight="30"
+                        android:layout_height="30dp"
+                        android:layout_width="30dp"
+                        android:src="@drawable/cloudandsun"
+                        tools:src="@drawable/cloudandsun"></ImageView>
+                </LinearLayout>
+            </TableRow>
+                <TableRow>
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="-3 -2 -1 0 1 2 3 5 7 9 11 13 15 18 13 12"
+                        android:textSize="24sp"/>
+                </TableRow>
+        </TableLayout>
+
+
+    </LinearLayout>>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#03A9F4">
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Понедельник"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="30"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun"></ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="       -3"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="10"
+                    android:textSize="24sp" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Вторник"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="30"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun"></ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="       -2"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="8"
+                    android:textSize="24sp" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Среда"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="30"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun"></ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="       -3"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="5"
+                    android:textSize="24sp" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Четверг"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="30"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun"></ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="       -1"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="2"
+                    android:textSize="24sp" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Пятница"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="30"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun"></ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="       0"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="2"
+                    android:textSize="24sp" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Суббота"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="30"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun"></ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="       -2"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="7"
+                    android:textSize="24sp" />
+            </TableRow>
+        </TableLayout>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

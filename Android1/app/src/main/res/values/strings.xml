@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">HelloWorld</string>
+    <string name="mainpicture">TODO</string>
+    <string name="temperature">+19</string>
+    <string name="City">Ессентуки</string>
+    <string name="city">Ессентуки</string>
+    <string name="weather">Облачно</string>
 </resources>
