@@ -4,189 +4,213 @@
     android:id="@+id/main"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@color/colorPrimary"
     android:divider="@drawable/clouds"
     android:gravity="center"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@drawable/clouds"
         android:gravity="center"
-        android:orientation="vertical"
-        android:background="@drawable/clouds">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/city"
-            android:textSize="36sp"
-            android:textColor="#ffffff"
-            ></TextView>
+            android:textColor="@color/textcolorPrimary"
+            android:textSize="36sp"></TextView>
 
         <TextView
             android:id="@+id/weather_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/weather"
-            android:textSize="24sp"
-            android:textColor="#ffffff"
-            ></TextView>
+            android:textColor="@color/textcolorPrimary"
+            android:textSize="24sp"></TextView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0°C"
-            android:textSize="40sp"
-            android:textColor="#ffffff"
-            ></TextView>
+            android:text="@string/gradus_forengheit"
+            android:textColor="@color/textcolorPrimary"
+            android:textSize="40sp"></TextView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Воскресенье"
-            android:textSize="25sp"
-            android:textColor="#ffffff"
-            ></TextView>
+            android:text="@string/sunday"
+            android:textColor="@color/textcolorPrimary"
+            android:textSize="25sp"></TextView>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="100dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:background="#03A9F4">
-        >
-        <TableLayout
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TableRow>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="9 10 11 12 13 14 15 16 17 18 19 20 21"
-                    android:textSize="24sp"/>
-            </TableRow>
-            <TableRow>
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+            android:layout_height="100dp"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="30sp"
-                        android:layout_height="30sp"
-                        android:layout_weight="30"
-                        android:background="#2196F3"
-                        android:src="@drawable/cloudandsun"
-                        tools:src="@drawable/cloudandsun" />
+            <TextView
+                android:id="@+id/days"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/daysofmounth"
+                android:textColor="@color/textcolorPrimary"
+                android:textSize="24sp" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
                 <ImageView
-                    android:layout_weight="30"
-                    android:layout_height="30dp"
-                    android:layout_width="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="20"
+                    android:background="@color/colorAccent"
+                    android:contentDescription="@string/sunny"
                     android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun"
-                    ></ImageView>
+                    tools:src="@drawable/cloudandsun" />
+
                 <ImageView
-                    android:layout_weight="30"
-                    android:layout_height="30dp"
-                    android:layout_width="30dp"
-                    android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun"
-                    ></ImageView>
-                <ImageView
-                    android:layout_weight="30"
-                    android:layout_height="30dp"
-                    android:layout_width="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/sunny"
                     android:src="@drawable/cloudandsun"
                     tools:src="@drawable/cloudandsun"></ImageView>
+
                 <ImageView
-                    android:layout_weight="30"
-                    android:layout_height="30dp"
-                    android:layout_width="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/sunny"
                     android:src="@drawable/cloudandsun"
                     tools:src="@drawable/cloudandsun"></ImageView>
-                    <ImageView
-                        android:layout_weight="30"
-                        android:layout_height="30dp"
-                        android:layout_width="30dp"
-                        android:src="@drawable/cloudandsun"
-                        tools:src="@drawable/cloudandsun"></ImageView>
-                    <ImageView
-                        android:layout_weight="30"
-                        android:layout_height="30dp"
-                        android:layout_width="30dp"
-                        android:src="@drawable/cloudandsun"
-                        tools:src="@drawable/cloudandsun"></ImageView>
-                    <ImageView
-                        android:layout_weight="30"
-                        android:layout_height="30dp"
-                        android:layout_width="30dp"
-                        android:src="@drawable/cloudandsun"
-                        tools:src="@drawable/cloudandsun"></ImageView>
-                    <ImageView
-                        android:layout_weight="30"
-                        android:layout_height="30dp"
-                        android:layout_width="30dp"
-                        android:src="@drawable/cloudandsun"
-                        tools:src="@drawable/cloudandsun"></ImageView>
-                    <ImageView
-                        android:layout_weight="30"
-                        android:layout_height="30dp"
-                        android:layout_width="30dp"
-                        android:src="@drawable/cloudandsun"
-                        tools:src="@drawable/cloudandsun"></ImageView>
-                    <ImageView
-                        android:layout_weight="30"
-                        android:layout_height="30dp"
-                        android:layout_width="30dp"
-                        android:src="@drawable/cloudandsun"
-                        tools:src="@drawable/cloudandsun"></ImageView>
-                    <ImageView
-                        android:layout_weight="30"
-                        android:layout_height="30dp"
-                        android:layout_width="30dp"
-                        android:src="@drawable/cloudandsun"
-                        tools:src="@drawable/cloudandsun"></ImageView>
-                    <ImageView
-                        android:layout_weight="30"
-                        android:layout_height="30dp"
-                        android:layout_width="30dp"
-                        android:src="@drawable/cloudandsun"
-                        tools:src="@drawable/cloudandsun"></ImageView>
-                    <ImageView
-                        android:layout_weight="30"
-                        android:layout_height="30dp"
-                        android:layout_width="30dp"
-                        android:src="@drawable/cloudandsun"
-                        tools:src="@drawable/cloudandsun"></ImageView>
-                </LinearLayout>
-            </TableRow>
-                <TableRow>
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="-3 -2 -1 0 1 2 3 5 7 9 11 13 15 18 13 12"
-                        android:textSize="24sp"/>
-                </TableRow>
-        </TableLayout>
 
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/sunny"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun"></ImageView>
 
-    </LinearLayout>>
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/sunny"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun"></ImageView>
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/sunny"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun"></ImageView>
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/sunny"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun"></ImageView>
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/sunny"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun"></ImageView>
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/sunny"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun"></ImageView>
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/sunny"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun"></ImageView>
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/sunny"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun"></ImageView>
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/sunny"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun"></ImageView>
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/sunny"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun"></ImageView>
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/sunny"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun"></ImageView>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/_3_2_1_0_1_2_3_5_7_9_11_13_15_18_13_12"
+                android:textColor="@color/textcolorPrimary"
+                android:textSize="24sp" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
 
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#03A9F4">
+            android:background="@color/colorPrimary">
 
             <TableRow>
 
@@ -194,13 +218,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Понедельник"
+                    android:text="@string/monday"
+                    android:textColor="@color/textcolorPrimary"
                     android:textSize="24sp" />
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_weight="30"
+                    android:contentDescription="@string/sunny"
                     android:src="@drawable/cloudandsun"
                     tools:src="@drawable/cloudandsun"></ImageView>
 
@@ -208,14 +234,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="       -3"
+                    android:text="@string/_3"
+                    android:textColor="@color/textcolorPrimary"
                     android:textSize="24sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="10"
+                    android:text="@string/_10"
+                    android:textColor="@color/textcolorPrimary"
                     android:textSize="24sp" />
             </TableRow>
 
@@ -225,13 +253,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Вторник"
+                    android:text="@string/tuesday"
+                    android:textColor="@color/textcolorPrimary"
                     android:textSize="24sp" />
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_weight="30"
+                    android:contentDescription="@string/sunny"
                     android:src="@drawable/cloudandsun"
                     tools:src="@drawable/cloudandsun"></ImageView>
 
@@ -239,14 +269,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="       -2"
+                    android:text="@string/_2"
+                    android:textColor="@color/textcolorPrimary"
                     android:textSize="24sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="8"
+                    android:text="@string/_8"
+                    android:textColor="@color/textcolorPrimary"
                     android:textSize="24sp" />
             </TableRow>
 
@@ -256,13 +288,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Среда"
+                    android:text="@string/wednesday"
+                    android:textColor="@color/textcolorPrimary"
                     android:textSize="24sp" />
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_weight="30"
+                    android:contentDescription="@string/sunny"
                     android:src="@drawable/cloudandsun"
                     tools:src="@drawable/cloudandsun"></ImageView>
 
@@ -270,14 +304,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="       -3"
+                    android:text="@string/_3"
+                    android:textColor="@color/textcolorPrimary"
                     android:textSize="24sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="5"
+                    android:text="@string/_5"
+                    android:textColor="@color/textcolorPrimary"
                     android:textSize="24sp" />
             </TableRow>
 
@@ -287,13 +323,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Четверг"
+                    android:text="@string/thursday"
+                    android:textColor="@color/textcolorPrimary"
                     android:textSize="24sp" />
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_weight="30"
+                    android:contentDescription="@string/sunny"
                     android:src="@drawable/cloudandsun"
                     tools:src="@drawable/cloudandsun"></ImageView>
 
@@ -301,14 +339,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="       -1"
+                    android:text="@string/_1"
+                    android:textColor="@color/textcolorPrimary"
                     android:textSize="24sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="2"
+                    android:text="@string/_8"
+                    android:textColor="@color/textcolorPrimary"
                     android:textSize="24sp" />
             </TableRow>
 
@@ -318,13 +358,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Пятница"
+                    android:text="@string/friday"
+                    android:textColor="@color/textcolorPrimary"
                     android:textSize="24sp" />
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_weight="30"
+                    android:contentDescription="@string/sunny"
                     android:src="@drawable/cloudandsun"
                     tools:src="@drawable/cloudandsun"></ImageView>
 
@@ -332,14 +374,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="       0"
+                    android:text="@string/_0"
+                    android:textAlignment="center"
+                    android:textColor="@color/textcolorPrimary"
                     android:textSize="24sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="2"
+                    android:text="@string/_m2"
+                    android:textColor="@color/textcolorPrimary"
                     android:textSize="24sp" />
             </TableRow>
 
@@ -349,13 +394,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Суббота"
+                    android:text="@string/saturday"
+                    android:textColor="@color/textcolorPrimary"
                     android:textSize="24sp" />
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_weight="30"
+                    android:contentDescription="@string/sunny"
                     android:src="@drawable/cloudandsun"
                     tools:src="@drawable/cloudandsun"></ImageView>
 
@@ -363,18 +410,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="       -2"
+                    android:text="@string/_2"
+                    android:textColor="@color/textcolorPrimary"
                     android:textSize="24sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="7"
+                    android:text="@string/_7"
+                    android:textColor="@color/textcolorPrimary"
                     android:textSize="24sp" />
             </TableRow>
         </TableLayout>
-
 
 
     </LinearLayout>
