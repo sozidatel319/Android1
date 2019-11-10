@@ -1,49 +1,70 @@
 package com.example.helloworld;
 
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Switch;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
-    private String tag = "MainActivity";
+public class SettingsActivity extends AppCompatActivity {
+    private Switch themecolor;
+    private Switch font_size;
+    private Switch unit_of_measure;
+    private static String THEME = "theme";
+    private static String FONTSIZE = "fontsize";
+    private static String UNTIT_OF_MEASURE = "unitofmeasure";
+    private String tag = "SettingsActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        findViewById(R.id.city_changer_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, CityChangerActivity.class));
-            }
-        });
-        findViewById(R.id.settings_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-            }
-        });
+        setContentView(R.layout.settings);
 
-        Log.d(tag, "onCreate");
-        Toast.makeText(getApplicationContext(), "onCreate_" + tag, Toast.LENGTH_LONG).show();
+        themecolor = findViewById(R.id.themecolor);
+        font_size = findViewById(R.id.fontsize);
+        unit_of_measure = findViewById(R.id.unitofmeasure);
+
+        findViewById(R.id.savesettings_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         restoreData(savedInstanceState);
     }
 
     private void restoreData(Bundle savedInstanceState) {
+
         if (savedInstanceState == null) return;
+
+        if (themecolor != null) {
+            themecolor.setChecked(savedInstanceState.getBoolean(THEME));
+        }
+        if (font_size != null) {
+            font_size.setChecked(savedInstanceState.getBoolean(FONTSIZE));
+        }
+        if (unit_of_measure != null) {
+            unit_of_measure.setChecked(savedInstanceState.getBoolean(UNTIT_OF_MEASURE));
+        }
     }
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
 
+        if (themecolor != null) {
+            outState.putBoolean(THEME, themecolor.isChecked());
+        }
+        if (font_size != null) {
+            outState.putBoolean(FONTSIZE, font_size.isChecked());
+        }
+        if (unit_of_measure != null) {
+            outState.putBoolean(UNTIT_OF_MEASURE, unit_of_measure.isChecked());
+        }
         Log.d(tag, "onSaveIntstanceState");
         Toast.makeText(getApplicationContext(), "onSaveIntstanceState_" + tag, Toast.LENGTH_LONG).show();
     }
@@ -82,5 +103,4 @@ public class MainActivity extends AppCompatActivity {
         Log.d(tag, "onDestroy");
         Toast.makeText(getApplicationContext(), "onDestroy_" + tag, Toast.LENGTH_LONG).show();
     }
-
 }

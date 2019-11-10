@@ -42,4 +42,12 @@
         android:textAlignment="center"
         android:textColor="@color/textcolorPrimary"
         android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/savesettings_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/save_changes"
+        android:layout_gravity="center"
+        />
 </LinearLayout>

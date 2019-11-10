@@ -1,7 +1,5 @@
 package com.example.helloworld;
 
-import android.widget.AutoCompleteTextView;
-
 public final class City_changerPresenter {
 
     String cityName = "Moscow";
