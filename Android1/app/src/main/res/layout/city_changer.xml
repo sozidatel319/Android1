@@ -4,7 +4,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="?android:attr/colorPrimary"
     android:orientation="vertical">
 
     <TextView
@@ -14,7 +14,7 @@
         android:layout_marginTop="30sp"
         android:gravity="center"
         android:text="@string/select_city"
-        android:textColor="@color/textcolorPrimary"
+        android:textColor="@color/textColorPrimary"
         android:textSize="24sp"></TextView>
 
     <AutoCompleteTextView
@@ -25,68 +25,67 @@
         android:gravity="center"
         android:hint="@string/enter_city_name"
         android:paddingTop="20dp"
-        android:textColor="@color/textcolorPrimary" />
+        android:textColor="@color/textColorPrimary" />
 
     <TextView
         android:id="@+id/city1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:focusable="true"
         android:paddingTop="20dp"
         android:text="@string/city"
         android:textAlignment="center"
-        android:textColor="@color/textcolorPrimary"
-        android:textSize="20sp"
-        android:focusable="true" />
+        android:textColor="@color/textColorPrimary"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/city2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:focusable="true"
         android:paddingTop="5dp"
         android:text="@string/City"
         android:textAlignment="center"
-        android:textColor="@color/textcolorPrimary"
-        android:textSize="20sp"
-        android:focusable="true" />
+        android:textColor="@color/textColorPrimary"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/city3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:focusable="true"
         android:paddingTop="5dp"
         android:text="@string/Moscow"
         android:textAlignment="center"
-        android:textColor="@color/textcolorPrimary"
-        android:textSize="20sp"
-        android:focusable="true" />
+        android:textColor="@color/textColorPrimary"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/city4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:focusable="true"
         android:paddingTop="5dp"
         android:text="@string/St_P"
         android:textAlignment="center"
-        android:textColor="@color/textcolorPrimary"
-        android:textSize="20sp"
-        android:focusable="true" />
+        android:textColor="@color/textColorPrimary"
+        android:textSize="20sp" />
 
     <Switch
         android:id="@+id/info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:checked="false"
         android:paddingTop="30dp"
         android:text="@string/info"
         android:textAlignment="center"
-        android:textColor="@color/textcolorPrimary"
-        android:textSize="14sp"
-        android:layout_gravity="center"
-        />
+        android:textColor="@color/textColorPrimary"
+        android:textSize="14sp" />
 
     <Button
         android:id="@+id/savecity"
@@ -95,6 +94,7 @@
         android:layout_gravity="center"
         android:gravity="center_vertical"
         android:text="@string/save_changes"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark" />
 
 </LinearLayout>

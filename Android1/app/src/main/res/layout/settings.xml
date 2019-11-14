@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="?android:attr/colorPrimary"
     android:orientation="vertical">
 
     <TextView
@@ -12,7 +12,7 @@
         android:paddingTop="20dp"
         android:text="@string/settings"
         android:textAlignment="center"
-        android:textColor="@color/textcolorPrimary"
+        android:textColor="@color/textColorPrimary"
         android:textSize="24sp" />
 
     <Switch
@@ -22,7 +22,7 @@
         android:paddingTop="20dp"
         android:text="@string/theme"
         android:textAlignment="center"
-        android:textColor="@color/textcolorPrimary"
+        android:textColor="@color/textColorPrimary"
         android:textSize="18sp" />
 
     <Switch
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:text="@string/font"
         android:textAlignment="center"
-        android:textColor="@color/textcolorPrimary"
+        android:textColor="@color/textColorPrimary"
         android:textSize="18sp" />
 
     <Switch
@@ -40,14 +40,14 @@
         android:layout_height="wrap_content"
         android:text="@string/C_F"
         android:textAlignment="center"
-        android:textColor="@color/textcolorPrimary"
+        android:textColor="@color/textColorPrimary"
         android:textSize="18sp" />
 
     <Button
         android:id="@+id/savesettings_button"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="@string/save_changes"
         android:layout_gravity="center"
-        />
+        android:text="@string/save_changes"
+        android:textColor="@color/colorPrimaryDark" />
 </LinearLayout>

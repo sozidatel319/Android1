@@ -4,7 +4,7 @@
     android:id="@+id/main"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/colorPrimary"
+    android:background="?android:attr/colorPrimary"
     android:divider="@drawable/clouds"
     android:gravity="center"
     android:orientation="vertical">
@@ -21,36 +21,56 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/city"
-            android:textColor="@color/textcolorPrimary"
-            android:textSize="36sp"></TextView>
+            android:textColor="@color/textColorPrimary"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/weather_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/weather"
-            android:textColor="@color/textcolorPrimary"
+            android:textColor="@color/textColorPrimary"
             android:textSize="24sp"></TextView>
 
         <TextView
+            android:id="@+id/temperatureOfDay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/gradus_forengheit"
-            android:textColor="@color/textcolorPrimary"
-            android:textSize="40sp"></TextView>
+            android:textColor="@color/textColorPrimary"
+            android:textSize="30sp"></TextView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sunday"
-            android:textColor="@color/textcolorPrimary"
+            android:textColor="@color/textColorPrimary"
             android:textSize="25sp"></TextView>
+
+        <TextView
+            android:id="@+id/pressure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="20sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/wind"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="20sp"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/settings_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/settings" />
+            android:text="@string/settings"
+            android:textColor="@color/colorPrimaryDark" />
 
     </LinearLayout>
 
@@ -61,7 +81,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="100dp"
-            android:background="@color/colorAccent"
+            android:background="?android:attr/colorAccent"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -71,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/daysofmounth"
-                android:textColor="@color/textcolorPrimary"
+                android:textColor="@color/textColorPrimary"
                 android:textSize="24sp" />
 
             <LinearLayout
@@ -84,7 +104,7 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_weight="20"
-                    android:background="@color/colorAccent"
+                    android:background="@color/BlueAccent100"
                     android:contentDescription="@string/sunny"
                     android:src="@drawable/cloudandsun"
                     tools:src="@drawable/cloudandsun" />
@@ -95,7 +115,7 @@
                     android:layout_weight="20"
                     android:contentDescription="@string/sunny"
                     android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun"></ImageView>
+                    tools:src="@drawable/cloudandsun" />
 
                 <ImageView
                     android:layout_width="25dp"
@@ -103,7 +123,7 @@
                     android:layout_weight="20"
                     android:contentDescription="@string/sunny"
                     android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun"></ImageView>
+                    tools:src="@drawable/cloudandsun" />
 
                 <ImageView
                     android:layout_width="25dp"
@@ -111,7 +131,7 @@
                     android:layout_weight="20"
                     android:contentDescription="@string/sunny"
                     android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun"></ImageView>
+                    tools:src="@drawable/cloudandsun" />
 
                 <ImageView
                     android:layout_width="25dp"
@@ -119,7 +139,7 @@
                     android:layout_weight="20"
                     android:contentDescription="@string/sunny"
                     android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun"></ImageView>
+                    tools:src="@drawable/cloudandsun" />
 
                 <ImageView
                     android:layout_width="25dp"
@@ -127,7 +147,7 @@
                     android:layout_weight="20"
                     android:contentDescription="@string/sunny"
                     android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun"></ImageView>
+                    tools:src="@drawable/cloudandsun" />
 
                 <ImageView
                     android:layout_width="25dp"
@@ -200,7 +220,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/_3_2_1_0_1_2_3_5_7_9_11_13_15_18_13_12"
-                android:textColor="@color/textcolorPrimary"
+                android:textColor="@color/textColorPrimary"
                 android:textSize="24sp" />
         </LinearLayout>
     </HorizontalScrollView>
@@ -208,14 +228,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="?android:attr/colorPrimary"
         android:gravity="center"
         android:orientation="horizontal">
 
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorPrimary">
+            android:background="?android:attr/colorPrimary">
 
             <TableRow>
 
@@ -224,7 +244,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/monday"
-                    android:textColor="@color/textcolorPrimary"
+                    android:textColor="@color/textColorPrimary"
                     android:textSize="24sp" />
 
                 <ImageView
@@ -240,7 +260,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/_3"
-                    android:textColor="@color/textcolorPrimary"
+                    android:textColor="@color/textColorPrimary"
                     android:textSize="24sp" />
 
                 <TextView
@@ -248,7 +268,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/_10"
-                    android:textColor="@color/textcolorPrimary"
+                    android:textColor="@color/textColorPrimary"
                     android:textSize="24sp" />
             </TableRow>
 
@@ -259,7 +279,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/tuesday"
-                    android:textColor="@color/textcolorPrimary"
+                    android:textColor="@color/textColorPrimary"
                     android:textSize="24sp" />
 
                 <ImageView
@@ -275,7 +295,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/_2"
-                    android:textColor="@color/textcolorPrimary"
+                    android:textColor="@color/textColorPrimary"
                     android:textSize="24sp" />
 
                 <TextView
@@ -283,7 +303,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/_8"
-                    android:textColor="@color/textcolorPrimary"
+                    android:textColor="@color/textColorPrimary"
                     android:textSize="24sp" />
             </TableRow>
 
@@ -294,7 +314,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/wednesday"
-                    android:textColor="@color/textcolorPrimary"
+                    android:textColor="@color/textColorPrimary"
                     android:textSize="24sp" />
 
                 <ImageView
@@ -310,7 +330,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/_3"
-                    android:textColor="@color/textcolorPrimary"
+                    android:textColor="@color/textColorPrimary"
                     android:textSize="24sp" />
 
                 <TextView
@@ -318,7 +338,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/_5"
-                    android:textColor="@color/textcolorPrimary"
+                    android:textColor="@color/textColorPrimary"
                     android:textSize="24sp" />
             </TableRow>
 
@@ -329,7 +349,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/thursday"
-                    android:textColor="@color/textcolorPrimary"
+                    android:textColor="@color/textColorPrimary"
                     android:textSize="24sp" />
 
                 <ImageView
@@ -345,7 +365,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/_1"
-                    android:textColor="@color/textcolorPrimary"
+                    android:textColor="@color/textColorPrimary"
                     android:textSize="24sp" />
 
                 <TextView
@@ -353,7 +373,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/_8"
-                    android:textColor="@color/textcolorPrimary"
+                    android:textColor="@color/textColorPrimary"
                     android:textSize="24sp" />
             </TableRow>
 
@@ -364,7 +384,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/friday"
-                    android:textColor="@color/textcolorPrimary"
+                    android:textColor="@color/textColorPrimary"
                     android:textSize="24sp" />
 
                 <ImageView
@@ -381,7 +401,7 @@
                     android:layout_weight="1"
                     android:text="@string/_0"
                     android:textAlignment="center"
-                    android:textColor="@color/textcolorPrimary"
+                    android:textColor="@color/textColorPrimary"
                     android:textSize="24sp" />
 
                 <TextView
@@ -389,7 +409,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/_m2"
-                    android:textColor="@color/textcolorPrimary"
+                    android:textColor="@color/textColorPrimary"
                     android:textSize="24sp" />
             </TableRow>
 
@@ -400,7 +420,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/saturday"
-                    android:textColor="@color/textcolorPrimary"
+                    android:textColor="@color/textColorPrimary"
                     android:textSize="24sp" />
 
                 <ImageView
@@ -416,7 +436,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/_2"
-                    android:textColor="@color/textcolorPrimary"
+                    android:textColor="@color/textColorPrimary"
                     android:textSize="24sp" />
 
                 <TextView
@@ -424,7 +444,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/_7"
-                    android:textColor="@color/textcolorPrimary"
+                    android:textColor="@color/textColorPrimary"
                     android:textSize="24sp" />
             </TableRow>
 
@@ -437,7 +457,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="@string/select_city" />
+                    android:text="@string/select_city"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <Button
+                    android:id="@+id/buttonUri"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/aboutcity"
+                    android:textColor="@color/colorPrimaryDark" />
             </TableRow>
         </TableLayout>
 

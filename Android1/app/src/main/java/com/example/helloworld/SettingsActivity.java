@@ -3,6 +3,7 @@ package com.example.helloworld;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,9 +14,6 @@ public class SettingsActivity extends AppCompatActivity {
     private Switch themecolor;
     private Switch font_size;
     private Switch unit_of_measure;
-    private static String THEME = "theme";
-    private static String FONTSIZE = "fontsize";
-    private static String UNTIT_OF_MEASURE = "unitofmeasure";
     private String tag = "SettingsActivity";
 
     @Override
@@ -27,9 +25,23 @@ public class SettingsActivity extends AppCompatActivity {
         font_size = findViewById(R.id.fontsize);
         unit_of_measure = findViewById(R.id.unitofmeasure);
 
+        themecolor.setChecked(SettingsPresenter.getInstance().getThemecolor());
+        font_size.setChecked(SettingsPresenter.getInstance().getFontsize());
+        unit_of_measure.setChecked(SettingsPresenter.getInstance().getUnitofmeasure());
+
         findViewById(R.id.savesettings_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
+                SettingsPresenter.getInstance().setThemecolor(themecolor.isChecked());
+                SettingsPresenter.getInstance().setFontsize(font_size.isChecked());
+                SettingsPresenter.getInstance().setUnitofmeasure(unit_of_measure.isChecked());
+
+                intent.putExtra(Constants.THEME, themecolor.isChecked());
+                intent.putExtra(Constants.FONTSIZE, font_size.isChecked());
+                intent.putExtra(Constants.UNTIT_OF_MEASURE, unit_of_measure.isChecked());
+
+                setResult(RESULT_OK, intent);
                 finish();
             }
         });
@@ -41,30 +53,19 @@ public class SettingsActivity extends AppCompatActivity {
 
         if (savedInstanceState == null) return;
 
-        if (themecolor != null) {
-            themecolor.setChecked(savedInstanceState.getBoolean(THEME));
-        }
-        if (font_size != null) {
-            font_size.setChecked(savedInstanceState.getBoolean(FONTSIZE));
-        }
-        if (unit_of_measure != null) {
-            unit_of_measure.setChecked(savedInstanceState.getBoolean(UNTIT_OF_MEASURE));
-        }
+        themecolor.setChecked(SettingsPresenter.getInstance().getThemecolor());
+        font_size.setChecked(SettingsPresenter.getInstance().getFontsize());
+        unit_of_measure.setChecked(SettingsPresenter.getInstance().getUnitofmeasure());
     }
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        if (themecolor != null) {
-            outState.putBoolean(THEME, themecolor.isChecked());
-        }
-        if (font_size != null) {
-            outState.putBoolean(FONTSIZE, font_size.isChecked());
-        }
-        if (unit_of_measure != null) {
-            outState.putBoolean(UNTIT_OF_MEASURE, unit_of_measure.isChecked());
-        }
+        SettingsPresenter.getInstance().setThemecolor(themecolor.isChecked());
+        SettingsPresenter.getInstance().setFontsize(font_size.isChecked());
+        SettingsPresenter.getInstance().setUnitofmeasure(unit_of_measure.isChecked());
+
         Log.d(tag, "onSaveIntstanceState");
         Toast.makeText(getApplicationContext(), "onSaveIntstanceState_" + tag, Toast.LENGTH_LONG).show();
     }
