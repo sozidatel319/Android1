@@ -23,6 +23,7 @@
     <string name="Moscow">Москва</string>
     <string name="St_P">Санкт-Петербург</string>
     <string name="gradus_forengheit">0°C</string>
+    <string name="forengheight">90F</string>
     <string name="sunday">Воскресенье</string>
     <string name="daysofmounth">9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27</string>
     <string name="info">Информация о скорости ветра и давлении   </string>
@@ -48,4 +49,5 @@
     <string name="_1">-1</string>
     <string name="_m2">2</string>
     <string name="save_changes">Сохранить настройки</string>
+    <string name="aboutcity">Узнать о городе</string>
 </resources>
