@@ -27,53 +27,12 @@
         android:paddingTop="20dp"
         android:textColor="@color/textColorPrimary" />
 
-    <TextView
-        android:id="@+id/city1"
+    <fragment
+        android:id="@+id/fragment"
+        android:name="com.example.helloworld.CityFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:paddingTop="20dp"
-        android:text="@string/city"
-        android:textAlignment="center"
-        android:textColor="@color/textColorPrimary"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/city2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:paddingTop="5dp"
-        android:text="@string/City"
-        android:textAlignment="center"
-        android:textColor="@color/textColorPrimary"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/city3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:paddingTop="5dp"
-        android:text="@string/Moscow"
-        android:textAlignment="center"
-        android:textColor="@color/textColorPrimary"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/city4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:paddingTop="5dp"
-        android:text="@string/St_P"
-        android:textAlignment="center"
-        android:textColor="@color/textColorPrimary"
-        android:textSize="20sp" />
+        tools:layout="@layout/fragment_city" />
 
     <Switch
         android:id="@+id/info"

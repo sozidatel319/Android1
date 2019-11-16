@@ -225,251 +225,34 @@
         </LinearLayout>
     </HorizontalScrollView>
 
+    <fragment
+        android:id="@+id/weatherfragment"
+        android:name="com.example.helloworld.WeatherFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/fragment_weather" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/colorPrimary"
-        android:gravity="center"
         android:orientation="horizontal">
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="?android:attr/colorPrimary">
+        <Button
+            android:id="@+id/city_changer_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/select_city"
+            android:textColor="@color/colorPrimaryDark"
+            tools:ignore="ButtonStyle" />
 
-            <TableRow>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/monday"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="24sp" />
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="30"
-                    android:contentDescription="@string/sunny"
-                    android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun"></ImageView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/_3"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/_10"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="24sp" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/tuesday"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="24sp" />
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="30"
-                    android:contentDescription="@string/sunny"
-                    android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun"></ImageView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/_2"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/_8"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="24sp" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/wednesday"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="24sp" />
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="30"
-                    android:contentDescription="@string/sunny"
-                    android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun"></ImageView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/_3"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/_5"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="24sp" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/thursday"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="24sp" />
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="30"
-                    android:contentDescription="@string/sunny"
-                    android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun"></ImageView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/_1"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/_8"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="24sp" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/friday"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="24sp" />
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="30"
-                    android:contentDescription="@string/sunny"
-                    android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun"></ImageView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/_0"
-                    android:textAlignment="center"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/_m2"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="24sp" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/saturday"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="24sp" />
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="30"
-                    android:contentDescription="@string/sunny"
-                    android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun"></ImageView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/_2"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/_7"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="24sp" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <Button
-                    android:id="@+id/city_changer_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/select_city"
-                    android:textColor="@color/colorPrimaryDark" />
-
-                <Button
-                    android:id="@+id/buttonUri"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/aboutcity"
-                    android:textColor="@color/colorPrimaryDark" />
-            </TableRow>
-        </TableLayout>
-
-
+        <Button
+            android:id="@+id/buttonUri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/aboutcity"
+            android:textColor="@color/colorPrimaryDark"
+            tools:ignore="ButtonStyle" />
     </LinearLayout>
 
 
