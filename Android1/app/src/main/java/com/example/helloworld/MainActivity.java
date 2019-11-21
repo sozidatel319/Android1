@@ -4,15 +4,21 @@ package com.example.helloworld;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView pressure;
     private TextView wind;
     private TextView temperature_of_day;
-    private LinearLayout main_layout;
     private String tag = "MainActivity";
     private static final int CITYCHANGER_CODE = 7;
     private static final int SETTINGS_CODE = 90;
@@ -29,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        main_layout = findViewById(R.id.main);
+
         cityName = findViewById(R.id.city);
         pressure = findViewById(R.id.pressure);
         wind = findViewById(R.id.wind);
@@ -61,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d(tag, "onCreate");
         Toast.makeText(getApplicationContext(), "onCreate_" + tag, Toast.LENGTH_LONG).show();
-
         restoreData(savedInstanceState);
     }
+
 
     private void restoreData(Bundle savedInstanceState) {
         if (savedInstanceState == null) return;

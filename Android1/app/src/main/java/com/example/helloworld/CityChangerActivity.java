@@ -9,17 +9,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class CityChangerActivity extends AppCompatActivity {
     private Switch info;
     private AutoCompleteTextView cityName;
     private String tag = "CityChangerActivity";
-    private TextView city1;
-    private TextView city2;
-    private TextView city3;
-    private TextView city4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +24,7 @@ public class CityChangerActivity extends AppCompatActivity {
         info = findViewById(R.id.info);
         cityName.setText(City_changerPresenter.getInstance().getCityName());
         info.setChecked(City_changerPresenter.getInstance().getInfoisChecked());
-        city1 = findViewById(R.id.city1);
-        city2 = findViewById(R.id.city2);
-        city3 = findViewById(R.id.city3);
-        city4 = findViewById(R.id.city4);
+
 
         findViewById(R.id.savecity).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,30 +43,6 @@ public class CityChangerActivity extends AppCompatActivity {
 
                 setResult(RESULT_OK, intent);
                 finish();
-            }
-        });
-        city1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cityName.setText(city1.getText());
-            }
-        });
-        city2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cityName.setText(city2.getText());
-            }
-        });
-        city3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cityName.setText(city3.getText());
-            }
-        });
-        city4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cityName.setText(city4.getText());
             }
         });
 
