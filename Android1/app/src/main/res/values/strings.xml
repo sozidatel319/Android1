@@ -12,6 +12,15 @@
         <item>Saint-Peterburg</item>
         <item>Санкт Петербург</item>
     </string-array>
+    <string-array name="daysofweek">
+        <item>Понедельник</item>
+        <item>Вторник</item>
+        <item>Среда</item>
+        <item>Четверг</item>
+        <item>Пятница</item>
+        <item>Суббота</item>
+        <item>Воскресенье</item>
+    </string-array>
 
 
     <string name="weather">Облачно</string>
