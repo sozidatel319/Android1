@@ -3,11 +3,9 @@ package com.example.helloworld;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,12 +13,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private TextView cityName;
     private TextView pressure;
@@ -32,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -151,11 +145,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (requestCode == SETTINGS_CODE) {
-            if (data.getBooleanExtra(Constants.THEME, false)) {
+            recreate();
 
-            } else {
-
-            }
             if (data.getBooleanExtra(Constants.UNTIT_OF_MEASURE, false)) {
                 temperature_of_day.setText(R.string.forengheight);
             } else {
@@ -165,11 +156,9 @@ public class MainActivity extends AppCompatActivity {
             if (data.getBooleanExtra(Constants.FONTSIZE, false)) {
 
             } else {
-
             }
         }
     }
-
 }
 
 
