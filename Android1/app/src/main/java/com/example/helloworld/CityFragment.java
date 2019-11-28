@@ -18,6 +18,7 @@ public class CityFragment extends Fragment {
     private TextView city3;
     private TextView city4;
     private TextInputEditText cityName;
+
     public CityFragment() {
         // Required empty public constructor
     }
@@ -57,6 +58,7 @@ public class CityFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 cityName.setText(city2.getText());
+
             }
         });
         city3.setOnClickListener(new View.OnClickListener() {

@@ -19,17 +19,18 @@ public class SettingsActivity extends BaseActivity {
     private Switch font_size;
     private Switch unit_of_measure;
     private String tag = "SettingsActivity";
+    boolean statusTheme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (isDarkTheme()) {
-            setTheme(R.style.AppThemeDark);
-        } else {
-            setTheme(R.style.AppTheme);
-        }
         setContentView(R.layout.settings);
 
+        init();
+        restoreData(savedInstanceState);
+    }
+
+    private void init(){
         themecolor = findViewById(R.id.themecolor);
         font_size = findViewById(R.id.fontsize);
         unit_of_measure = findViewById(R.id.unitofmeasure);
@@ -38,10 +39,13 @@ public class SettingsActivity extends BaseActivity {
         themecolor.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                statusTheme = true;
+                SettingsPresenter.getInstance().setThemecolor(statusTheme);
                 setDarkTheme(isChecked);
                 recreate();
             }
         });
+
         font_size.setChecked(SettingsPresenter.getInstance().getFontsize());
         unit_of_measure.setChecked(SettingsPresenter.getInstance().getUnitofmeasure());
 
@@ -78,6 +82,14 @@ public class SettingsActivity extends BaseActivity {
                     public void onDismissed(Snackbar transientBottomBar, int event) {
                         super.onDismissed(transientBottomBar, event);
                         if (event == Snackbar.Callback.DISMISS_EVENT_TIMEOUT) {
+
+                            statusTheme = SettingsPresenter.getInstance().getThemecolor();
+                            if (statusTheme) {
+                                if (themecolor.isChecked()){
+                                    themecolor.setChecked(false);
+                                }else themecolor.setChecked(true);
+                            }
+
                             Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
                             setResult(RESULT_CANCELED, intent);
                             finish();
@@ -88,8 +100,6 @@ public class SettingsActivity extends BaseActivity {
 
             }
         });
-
-        restoreData(savedInstanceState);
     }
 
     private void restoreData(Bundle savedInstanceState) {

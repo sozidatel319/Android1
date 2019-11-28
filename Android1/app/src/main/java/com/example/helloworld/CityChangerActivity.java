@@ -1,7 +1,6 @@
 package com.example.helloworld;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,10 +28,10 @@ public class CityChangerActivity extends BaseActivity {
         inputCityName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus)return;
-                if (patternCityName.matcher(((TextView)v).getText().toString()).matches()){
+                if (hasFocus) return;
+                if (patternCityName.matcher(((TextView) v).getText().toString()).matches()) {
                     ((TextView) v).setError(null);
-                }else {
+                } else {
                     ((TextView) v).setError(getResources().getText(R.string.cityinputerror));
                 }
             }
@@ -47,15 +46,16 @@ public class CityChangerActivity extends BaseActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(CityChangerActivity.this, MainActivity.class);
-                if (inputCityName.getText().toString().matches("^\\S{3,}")) {
+                if (inputCityName.getText().toString().matches("^\\p{Lu}\\p{Ll}+(((-|\\s)\\p{Ll}+)?(-|\\s)\\p{Lu}\\p{Ll}+)?")) {
                     intent.putExtra(Constants.CITY_NAME, inputCityName.getText().toString());
                 }
-                    intent.putExtra(Constants.INFO, info.isChecked());
-                    intent.putExtra(Constants.PRESSURE, "Давление в норме");
-                    intent.putExtra(Constants.WIND_SPEED, "Ветер 5 м/с");
+                intent.putExtra(Constants.INFO, info.isChecked());
+                intent.putExtra(Constants.PRESSURE, "Давление в норме");
+                intent.putExtra(Constants.WIND_SPEED, "Ветер 5 м/с");
 
                 City_changerPresenter.getInstance().setCityName(inputCityName.getText().toString());
                 City_changerPresenter.getInstance().setInfoisChecked(info.isChecked());
+
 
                 setResult(RESULT_OK, intent);
                 finish();

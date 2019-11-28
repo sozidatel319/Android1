@@ -7,8 +7,8 @@
     <string name="enterCityName">Введите название города</string>
     <string name="select_city">Выберите город</string>
     <string name="enter_city_name">Введите название города</string>
-    <string name="city">Ессентуки</string>
-    <string name="City">Пятигорск</string>
+    <string name="Pyatigorsk">Пятигорск</string>
+    <string name="Essentuki">Essentuki</string>
     <string name="Moscow">Москва</string>
     <string name="St_P">Санкт-Петербург</string>
     <string name="gradus_forengheit">0°C</string>

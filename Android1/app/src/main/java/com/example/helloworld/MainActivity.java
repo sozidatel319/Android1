@@ -5,7 +5,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,12 +12,18 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends BaseActivity {
+import com.example.helloworld.model.WeatherModel;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+public class MainActivity extends BaseActivity implements WeatherProviderListener {
 
     private TextView cityName;
     private TextView pressure;
     private TextView wind;
     private TextView temperature_of_day;
+    private TextView clouds;
     private String tag = "MainActivity";
     private static final int CITYCHANGER_CODE = 7;
     private static final int SETTINGS_CODE = 90;
@@ -29,12 +34,22 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        init();
+        Log.d(tag, "onCreate");
+        Toast.makeText(getApplicationContext(), "onCreate_" + tag, Toast.LENGTH_LONG).show();
+        restoreData(savedInstanceState);
+    }
+
+    private void init() {
+
         cityName = findViewById(R.id.city);
         pressure = findViewById(R.id.pressure);
         wind = findViewById(R.id.wind);
         temperature_of_day = findViewById(R.id.temperatureOfDay);
         temperature_of_day.setText(!SettingsPresenter.getInstance().getUnitofmeasure() ? R.string.gradus_forengheit : R.string.forengheight);
+        clouds = findViewById(R.id.weather_type);
 
+        cityName.setText(City_changerPresenter.getInstance().getCityName());
         findViewById(R.id.city_changer_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,16 +72,11 @@ public class MainActivity extends BaseActivity {
                 startActivity(browser);
             }
         });
-
-        Log.d(tag, "onCreate");
-        Toast.makeText(getApplicationContext(), "onCreate_" + tag, Toast.LENGTH_LONG).show();
-        restoreData(savedInstanceState);
     }
 
 
     private void restoreData(Bundle savedInstanceState) {
         if (savedInstanceState == null) return;
-
         cityName.setText(City_changerPresenter.getInstance().getCityName());
 
         if (City_changerPresenter.getInstance().getInfoisChecked()) {
@@ -97,8 +107,13 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        if (City_changerPresenter.getInstance().getMistake() == 1) {
+            Intent intent = new Intent(this, ErrorActivity.class);
+            startActivity(intent);
+        }
         Log.d(tag, "onResume");
         Toast.makeText(getApplicationContext(), "onResume_" + tag, Toast.LENGTH_LONG).show();
+        WeatherProvider.getInstance().addListener(this);
     }
 
     @Override
@@ -106,6 +121,7 @@ public class MainActivity extends BaseActivity {
         super.onPause();
         Log.d(tag, "onPause");
         Toast.makeText(getApplicationContext(), "onPause_" + tag, Toast.LENGTH_LONG).show();
+        WeatherProvider.getInstance().removeListener(this);
     }
 
     @Override
@@ -125,7 +141,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (resultCode != RESULT_OK) {
             return;
         }
@@ -158,6 +173,19 @@ public class MainActivity extends BaseActivity {
             } else {
             }
         }
+    }
+
+    @Override
+    public void updateWeather(WeatherModel model) {
+
+        double windSpeed = new BigDecimal(Double.toString(model.getWind().getSpeed())).setScale(0, RoundingMode.HALF_UP).doubleValue();
+        wind.setText("Ветер " + Integer.valueOf((int) windSpeed) + " м/с");
+        pressure.setText("Давление " + Integer.toString(model.getMain().getPressure()));
+        double temp = (model.getMain().getTemp() - 273.15);
+        double tempInCelvin = new BigDecimal(Double.toString(temp)).setScale(0, RoundingMode.HALF_UP).doubleValue();
+        temperature_of_day.setText((Integer.valueOf((int) tempInCelvin)) + " °C");
+        clouds.setText("Облачность " + Integer.valueOf(model.getClouds().getAll()));
+
     }
 }
 

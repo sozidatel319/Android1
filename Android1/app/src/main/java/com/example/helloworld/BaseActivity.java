@@ -34,4 +34,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         editor.apply();
     }
 
+    protected void setCancelThemeChanges(){
+
+    }
+
+
+
 }

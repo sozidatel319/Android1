@@ -49,10 +49,12 @@
         android:layout_gravity="center"
         android:checked="false"
         android:paddingTop="30dp"
+        android:splitTrack="false"
         android:text="@string/info"
         android:textAlignment="center"
         android:textColor="@color/textColorPrimary"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        tools:checked="false" />
 
     <Button
         android:id="@+id/savecity"

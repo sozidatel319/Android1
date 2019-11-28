@@ -2,7 +2,7 @@ package com.example.helloworld;
 
 public final class SettingsPresenter {
 
-    private boolean themecolor;
+    private boolean themeIsChanged;
     private boolean fontsize;
     private boolean unitofmeasure;
 
@@ -14,11 +14,11 @@ public final class SettingsPresenter {
     }
 
     public boolean getThemecolor() {
-        return themecolor;
+        return themeIsChanged;
     }
 
     public void setThemecolor(boolean themecolor) {
-        this.themecolor = themecolor;
+        this.themeIsChanged = themecolor;
     }
 
     public boolean getFontsize() {
