@@ -16,7 +16,7 @@
         android:clickable="true"
         android:focusable="true"
         android:paddingTop="20dp"
-        android:text="@string/city"
+        android:text="@string/Pyatigorsk"
         android:textAlignment="center"
         android:textColor="@color/textColorPrimary"
         android:textSize="20sp" />
@@ -28,7 +28,7 @@
         android:clickable="true"
         android:focusable="true"
         android:paddingTop="5dp"
-        android:text="@string/City"
+        android:text="@string/Essentuki"
         android:textAlignment="center"
         android:textColor="@color/textColorPrimary"
         android:textSize="20sp" />

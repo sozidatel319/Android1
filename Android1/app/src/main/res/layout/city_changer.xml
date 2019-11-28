@@ -17,15 +17,23 @@
         android:textColor="@color/textColorPrimary"
         android:textSize="24sp"></TextView>
 
-    <AutoCompleteTextView
-        android:id="@+id/citychanger"
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:completionHint="@string/city"
-        android:gravity="center"
-        android:hint="@string/enter_city_name"
-        android:paddingTop="20dp"
-        android:textColor="@color/textColorPrimary" />
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputcity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:hint="@string/enter_city_name"
+            android:textColor="@color/textColorPrimary"
+            android:inputType="textPersonName"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <fragment
         android:id="@+id/fragment"
@@ -41,10 +49,12 @@
         android:layout_gravity="center"
         android:checked="false"
         android:paddingTop="30dp"
+        android:splitTrack="false"
         android:text="@string/info"
         android:textAlignment="center"
         android:textColor="@color/textColorPrimary"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        tools:checked="false" />
 
     <Button
         android:id="@+id/savecity"
@@ -54,6 +64,6 @@
         android:gravity="center_vertical"
         android:text="@string/save_changes"
         android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark" />
+        android:textColor="@color/textColorPrimary" />
 
 </LinearLayout>

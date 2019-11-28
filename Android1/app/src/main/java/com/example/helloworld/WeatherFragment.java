@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +34,25 @@ public class WeatherFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+       initRecyclerView();
+    }
+
+    private void initRecyclerView(){
+
+        RecyclerView recyclerView = getActivity().findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        String[] daysofweek = getResources().getStringArray(R.array.daysofweek);
+
+        //  List<String> arrayList = new ArrayList<>(Arrays.asList(daysofweek));
+
+        recyclerView.setAdapter(new DaysOfWeekAdapter(daysofweek));
     }
 
 }

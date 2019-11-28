@@ -1,80 +1,64 @@
 package com.example.helloworld;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class CityChangerActivity extends AppCompatActivity {
+import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.regex.Pattern;
+
+public class CityChangerActivity extends BaseActivity {
     private Switch info;
-    private AutoCompleteTextView cityName;
+    private TextInputEditText inputCityName;
     private String tag = "CityChangerActivity";
-    private TextView city1;
-    private TextView city2;
-    private TextView city3;
-    private TextView city4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.city_changer);
-        cityName = findViewById(R.id.citychanger);
+        final Pattern patternCityName = Pattern.compile("^\\p{Lu}\\p{Ll}+(((-|\\s)\\p{Ll}+)?(-|\\s)\\p{Lu}\\p{Ll}+)?");
+        inputCityName = findViewById(R.id.inputcity);
+        inputCityName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) return;
+                if (patternCityName.matcher(((TextView) v).getText().toString()).matches()) {
+                    ((TextView) v).setError(null);
+                } else {
+                    ((TextView) v).setError(getResources().getText(R.string.cityinputerror));
+                }
+            }
+        });
         info = findViewById(R.id.info);
-        cityName.setText(City_changerPresenter.getInstance().getCityName());
+        inputCityName.setText(City_changerPresenter.getInstance().getCityName());
         info.setChecked(City_changerPresenter.getInstance().getInfoisChecked());
-        city1 = findViewById(R.id.city1);
-        city2 = findViewById(R.id.city2);
-        city3 = findViewById(R.id.city3);
-        city4 = findViewById(R.id.city4);
+
 
         findViewById(R.id.savecity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(CityChangerActivity.this, MainActivity.class);
-                if (cityName.getText().toString().matches("^\\S{3,}")) {
-                    intent.putExtra(Constants.CITY_NAME, cityName.getText().toString());
+                if (inputCityName.getText().toString().matches("^\\p{Lu}\\p{Ll}+(((-|\\s)\\p{Ll}+)?(-|\\s)\\p{Lu}\\p{Ll}+)?")) {
+                    intent.putExtra(Constants.CITY_NAME, inputCityName.getText().toString());
                 }
-                    intent.putExtra(Constants.INFO, info.isChecked());
-                    intent.putExtra(Constants.PRESSURE, "Давление в норме");
-                    intent.putExtra(Constants.WIND_SPEED, "Ветер 5 м/с");
+                intent.putExtra(Constants.INFO, info.isChecked());
+                intent.putExtra(Constants.PRESSURE, "Давление в норме");
+                intent.putExtra(Constants.WIND_SPEED, "Ветер 5 м/с");
 
-                City_changerPresenter.getInstance().setCityName(cityName.getText().toString());
+                City_changerPresenter.getInstance().setCityName(inputCityName.getText().toString());
                 City_changerPresenter.getInstance().setInfoisChecked(info.isChecked());
+
 
                 setResult(RESULT_OK, intent);
                 finish();
-            }
-        });
-        city1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cityName.setText(city1.getText());
-            }
-        });
-        city2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cityName.setText(city2.getText());
-            }
-        });
-        city3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cityName.setText(city3.getText());
-            }
-        });
-        city4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cityName.setText(city4.getText());
             }
         });
 
@@ -85,14 +69,14 @@ public class CityChangerActivity extends AppCompatActivity {
 
     private void restoreData(Bundle savedInstanceState) {
         if (savedInstanceState == null) return;
-        cityName.setText(City_changerPresenter.getInstance().getCityName());
+        inputCityName.setText(City_changerPresenter.getInstance().getCityName());
         info.setChecked(City_changerPresenter.getInstance().getInfoisChecked());
     }
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        City_changerPresenter.getInstance().setCityName(cityName.getText().toString());
+        City_changerPresenter.getInstance().setCityName(inputCityName.getText().toString());
         City_changerPresenter.getInstance().setInfoisChecked(info.isChecked());
     }
 
