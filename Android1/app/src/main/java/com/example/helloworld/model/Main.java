@@ -21,16 +21,6 @@ public class Main {
     @Expose
     private Double tempMax;
 
-    private int mistake;
-
-    public int getMistake() {
-        return mistake;
-    }
-
-    public void setMistake(int mistake) {
-        this.mistake = mistake;
-    }
-
     public Double getTemp() {
         return temp;
     }

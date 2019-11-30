@@ -27,13 +27,13 @@ public class MainActivity extends BaseActivity implements WeatherProviderListene
     private String tag = "MainActivity";
     private static final int CITYCHANGER_CODE = 7;
     private static final int SETTINGS_CODE = 90;
+    boolean isStart = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         init();
         Log.d(tag, "onCreate");
         Toast.makeText(getApplicationContext(), "onCreate_" + tag, Toast.LENGTH_LONG).show();
@@ -72,6 +72,8 @@ public class MainActivity extends BaseActivity implements WeatherProviderListene
                 startActivity(browser);
             }
         });
+
+
     }
 
 
@@ -100,6 +102,7 @@ public class MainActivity extends BaseActivity implements WeatherProviderListene
     @Override
     protected void onStart() {
         super.onStart();
+
         Log.d(tag, "onStart");
         Toast.makeText(getApplicationContext(), "onStart_" + tag, Toast.LENGTH_LONG).show();
     }
@@ -107,13 +110,13 @@ public class MainActivity extends BaseActivity implements WeatherProviderListene
     @Override
     protected void onResume() {
         super.onResume();
+        WeatherProvider.getInstance().addListener(this);
         if (City_changerPresenter.getInstance().getMistake() == 1) {
             Intent intent = new Intent(this, ErrorActivity.class);
             startActivity(intent);
         }
         Log.d(tag, "onResume");
         Toast.makeText(getApplicationContext(), "onResume_" + tag, Toast.LENGTH_LONG).show();
-        WeatherProvider.getInstance().addListener(this);
     }
 
     @Override
@@ -177,15 +180,24 @@ public class MainActivity extends BaseActivity implements WeatherProviderListene
 
     @Override
     public void updateWeather(WeatherModel model) {
-
-        double windSpeed = new BigDecimal(Double.toString(model.getWind().getSpeed())).setScale(0, RoundingMode.HALF_UP).doubleValue();
-        wind.setText("Ветер " + Integer.valueOf((int) windSpeed) + " м/с");
-        pressure.setText("Давление " + Integer.toString(model.getMain().getPressure()));
-        double temp = (model.getMain().getTemp() - 273.15);
-        double tempInCelvin = new BigDecimal(Double.toString(temp)).setScale(0, RoundingMode.HALF_UP).doubleValue();
-        temperature_of_day.setText((Integer.valueOf((int) tempInCelvin)) + " °C");
-        clouds.setText("Облачность " + Integer.valueOf(model.getClouds().getAll()));
-
+        if (model == null) {
+            Intent intent = new Intent(this,ErrorActivity.class);
+            startActivity(intent);
+            cityName.setText(City_changerPresenter.getInstance().getCityName());
+            wind.setText("--");
+            pressure.setText("--");
+            temperature_of_day.setText("--");
+            clouds.setText("--");
+        } else {
+            cityName.setText(City_changerPresenter.getInstance().getCityName());
+            double windSpeed = new BigDecimal(Double.toString(model.getWind().getSpeed())).setScale(0, RoundingMode.HALF_UP).doubleValue();
+            wind.setText("Ветер " + Integer.valueOf((int) windSpeed) + " м/с");
+            pressure.setText("Давление " + Integer.toString(model.getMain().getPressure()));
+            double temp = (model.getMain().getTemp() - 273.15);
+            double tempInCelvin = new BigDecimal(Double.toString(temp)).setScale(0, RoundingMode.HALF_UP).doubleValue();
+            temperature_of_day.setText((Integer.valueOf((int) tempInCelvin)) + " °C");
+            clouds.setText("Облачность " + Integer.valueOf(model.getClouds().getAll()));
+        }
     }
 }
 

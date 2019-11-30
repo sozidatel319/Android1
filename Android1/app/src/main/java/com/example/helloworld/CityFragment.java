@@ -7,9 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.Objects;
 
 
 public class CityFragment extends Fragment {
@@ -43,6 +46,7 @@ public class CityFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
         cityName = getActivity().findViewById(R.id.inputcity);
         city1 = getActivity().findViewById(R.id.city1);
         city2 = getActivity().findViewById(R.id.city2);
@@ -52,12 +56,14 @@ public class CityFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 cityName.setText(city1.getText());
+                //City_changerPresenter.getInstance().setCityName(city1.getText().toString());
             }
         });
         city2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cityName.setText(city2.getText());
+                //City_changerPresenter.getInstance().setCityName(city2.getText().toString());
 
             }
         });
@@ -65,13 +71,17 @@ public class CityFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 cityName.setText(city3.getText());
+                //  City_changerPresenter.getInstance().setCityName(city3.getText().toString());
             }
         });
         city4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cityName.setText(city4.getText());
+                // City_changerPresenter.getInstance().setCityName(city4.getText().toString());
             }
         });
     }
-}
+
+    }
+

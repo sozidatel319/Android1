@@ -47,26 +47,25 @@ public class WeatherProvider {
     }
 
     private WeatherModel getWeather(String cityname) {
-        String urlString = "http://api.openweathermap.org/data/2.5/weather?q=" + cityname + ",RU&appid=0507febdbdf6a636ec6bdcdfe0b909fc";
+        String urlString = "http://api.openweathermap.org/data/2.5/weather?q=" + cityname + ",RU&appid=bf4ee7b1e28b2bbea359e78e1ebbbd78";
         WeatherModel model = null;
         HttpURLConnection urlConnection = null;
         try {
             URL url = new URL(urlString);
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
-            urlConnection.setConnectTimeout(10000);
+            urlConnection.setConnectTimeout(1000);
             BufferedReader in = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
             if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
                 final String result = in.lines().collect(Collectors.joining("\n"));
                 Gson gson = new Gson();
                 model = gson.fromJson(result, WeatherModel.class);
+                City_changerPresenter.getInstance().setMistake(0);
             }
-            City_changerPresenter.getInstance().setMistake(0);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-            City_changerPresenter.getInstance().setMistake(1);
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -84,8 +83,9 @@ public class WeatherProvider {
                 final WeatherModel model;
                 model = getWeather(City_changerPresenter.getInstance().getCityName());
                 if (model == null) {
-                    return;
+                    City_changerPresenter.getInstance().setMistake(1);
                 }
+
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
@@ -96,7 +96,7 @@ public class WeatherProvider {
                 });
 
             }
-        }, 2000, 10000);
+        }, 2000, 1000);
     }
 
     void stop() {
