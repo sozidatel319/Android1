@@ -51,4 +51,5 @@
     <string name="aboutcity">Узнать о городе</string>
     <string name="cityinputerror">В названии города допущены ошибки</string>
     <string name="savesettins">Сохранить настройки?</string>
+    <string name="now">Сегодня</string>
 </resources>

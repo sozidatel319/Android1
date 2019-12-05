@@ -15,8 +15,10 @@ public class ErrorActivity extends BaseActivity{
         error.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                City_changerPresenter.getInstance().setOpened(true);
                 Intent intent = new Intent(ErrorActivity.this,CityChangerActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

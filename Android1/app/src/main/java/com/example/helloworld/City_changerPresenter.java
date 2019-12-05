@@ -6,20 +6,29 @@ public final class City_changerPresenter {
     private boolean infoisChecked;
     private String wind;
     private String pressure;
-    private int mistake = 0;
+    private volatile int mistake = 0;
+    private boolean isOpened = false;
 
     private static City_changerPresenter instance;
 
-    public static City_changerPresenter getInstance() {
+    public static synchronized City_changerPresenter getInstance() {
         instance = instance == null ? new City_changerPresenter() : instance;
         return instance;
     }
 
-    public int getMistake() {
+    public void setOpened(boolean opened) {
+        isOpened = opened;
+    }
+
+    public boolean getOpened(){
+        return isOpened;
+    }
+
+    public synchronized int getMistake() {
         return mistake;
     }
 
-    public void setMistake(int mistake) {
+    public synchronized void setMistake(int mistake) {
         this.mistake = mistake;
     }
 
