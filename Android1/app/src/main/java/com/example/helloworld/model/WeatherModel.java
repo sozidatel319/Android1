@@ -7,7 +7,9 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class WeatherModel {
-
+    @SerializedName("list")
+    @Expose
+    private java.util.List<com.example.helloworld.model.List> list = null;
     //@SerializedName("coord")
     //@Expose
     //private Coord coord;
@@ -20,33 +22,33 @@ public class WeatherModel {
     @SerializedName("main")
     @Expose
     private Main main;
-   // @SerializedName("visibility")
+    // @SerializedName("visibility")
     //@Expose
     //  private Integer visibility;
-   @SerializedName("wind")
+    @SerializedName("wind")
     @Expose
     private Wind wind;
     @SerializedName("clouds")
     @Expose
     private Clouds clouds;
-    //@SerializedName("dt")
-    //@Expose
-   // private Integer dt;
+    @SerializedName("dt")
+    @Expose
+    private Integer dt;
     //@SerializedName("sys")
-   // @Expose
-   // private Sys sys;
+    // @Expose
+    // private Sys sys;
     //@SerializedName("timezone")
     //@Expose
     //private Integer timezone;
     //@SerializedName("id")
-   // @Expose
-   // private Integer id;
+    // @Expose
+    // private Integer id;
     //@SerializedName("name")
-   // @Expose
-   // private String name;
-  //  @SerializedName("cod")
-   // @Expose
-  //  private Integer cod;
+    // @Expose
+    // private String name;
+    //  @SerializedName("cod")
+    // @Expose
+    //  private Integer cod;
 
     /*public Coord getCoord() {
         return coord;
@@ -55,7 +57,13 @@ public class WeatherModel {
     public void setCoord(Coord coord) {
         this.coord = coord;
     }
+    public java.util.List<com.example.helloworld.model.List> getList() {
+    return list;
+    }
 
+    public void setList(java.util.List<com.example.helloworld.model.List> list) {
+    this.list = list;
+    }
     public List<Weather> getWeather() {
         return weather;
     }
@@ -71,6 +79,14 @@ public class WeatherModel {
     public void setBase(String base) {
         this.base = base;
     }*/
+
+    public java.util.List<com.example.helloworld.model.List> getList() {
+        return list;
+    }
+
+    public void setList(java.util.List<com.example.helloworld.model.List> list) {
+        this.list = list;
+    }
 
     public Main getMain() {
         return main;
@@ -106,7 +122,7 @@ public class WeatherModel {
     public void setClouds(Clouds clouds) {
         this.clouds = clouds;
     }
-/*
+
     public Integer getDt() {
         return dt;
     }
@@ -114,7 +130,7 @@ public class WeatherModel {
     public void setDt(Integer dt) {
         this.dt = dt;
     }
-
+/*
     public Sys getSys() {
         return sys;
     }

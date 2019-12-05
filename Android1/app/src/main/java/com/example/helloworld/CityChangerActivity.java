@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.helloworld.model.WeatherModel;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
@@ -124,7 +125,7 @@ public class CityChangerActivity extends BaseActivity implements WeatherProvider
     }
 
     @Override
-    public void updateWeather(WeatherModel model) {
+    public void updateWeather(WeatherModel model, ArrayList<String> time) {
         City_changerPresenter.getInstance().setCityName(inputCityName.getText().toString());
     }
 }

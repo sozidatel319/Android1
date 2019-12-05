@@ -68,13 +68,12 @@
             android:id="@+id/settings_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/settings"
-             />
+            android:text="@string/settings" />
 
     </LinearLayout>
 
     <HorizontalScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <LinearLayout
@@ -82,144 +81,328 @@
             android:layout_height="100dp"
             android:background="?android:attr/colorAccent"
             android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/days"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/daysofmounth"
-                android:textColor="?android:attr/textColorPrimary"
-                android:textSize="24sp" />
+            android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="30dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_weight="20"
-                    android:contentDescription="@string/sunny"
-                    android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun" />
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_weight="20"
-                    android:contentDescription="@string/sunny"
-                    android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun" />
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_weight="20"
-                    android:contentDescription="@string/sunny"
-                    android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun" />
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_weight="20"
-                    android:contentDescription="@string/sunny"
-                    android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun" />
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_weight="20"
-                    android:contentDescription="@string/sunny"
-                    android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun" />
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_weight="20"
-                    android:contentDescription="@string/sunny"
-                    android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun" />
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_weight="20"
-                    android:contentDescription="@string/sunny"
-                    android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun"/>
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_weight="20"
-                    android:contentDescription="@string/sunny"
-                    android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun"/>
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_weight="20"
-                    android:contentDescription="@string/sunny"
-                    android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun"/>
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_weight="20"
-                    android:contentDescription="@string/sunny"
-                    android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun"/>
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_weight="20"
-                    android:contentDescription="@string/sunny"
-                    android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun"/>
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_weight="20"
-                    android:contentDescription="@string/sunny"
-                    android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun"/>
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_weight="20"
-                    android:contentDescription="@string/sunny"
-                    android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun"/>
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_weight="20"
-                    android:contentDescription="@string/sunny"
-                    android:src="@drawable/cloudandsun"
-                    tools:src="@drawable/cloudandsun"/>
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/temperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/_3_2_1_0_1_2_3_5_7_9_11_13_15_18_13_12"
-                android:textColor="?android:attr/textColorPrimary"
-                android:textSize="24sp" />
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/today"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/now"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/sunny"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun" />
+
+                <TextView
+                    android:id="@+id/now"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="1"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/time3now"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/sunny"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun" />
+
+                <TextView
+                    android:id="@+id/temp3h"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="1"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/time6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/sunny"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun" />
+
+                <TextView
+                    android:id="@+id/temp6h"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="1"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/time9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/sunny"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun" />
+
+                <TextView
+                    android:id="@+id/temp9h"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="1"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/time12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="1"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/sunny"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun" />
+
+                <TextView
+                    android:id="@+id/temp12h"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="1"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/time15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="1"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/sunny"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun" />
+
+                <TextView
+                    android:id="@+id/temp15h"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="1"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/time18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="1"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/sunny"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun" />
+
+                <TextView
+                    android:id="@+id/temp18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="1"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/time21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="1"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/sunny"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun" />
+
+                <TextView
+                    android:id="@+id/temp21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="1"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/time0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="1"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="20"
+                    android:contentDescription="@string/sunny"
+                    android:src="@drawable/cloudandsun"
+                    tools:src="@drawable/cloudandsun" />
+
+                <TextView
+                    android:id="@+id/temp0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="1"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="24sp" />
+            </LinearLayout>
         </LinearLayout>
     </HorizontalScrollView>
 

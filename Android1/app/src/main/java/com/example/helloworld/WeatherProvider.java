@@ -12,7 +12,12 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -23,6 +28,10 @@ public class WeatherProvider {
     private Timer timer;
     private static WeatherProvider instance = null;
     private Handler handler = new Handler();
+    private SimpleDateFormat hours = new SimpleDateFormat("HH", Locale.ENGLISH);
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+    private WeatherModel weatherModel;
+    private ArrayList<String> dates;
 
     public WeatherProvider() {
         listeners = new HashSet<>();
@@ -47,7 +56,7 @@ public class WeatherProvider {
     }
 
     private WeatherModel getWeather(String cityname) {
-        String urlString = "http://api.openweathermap.org/data/2.5/weather?q=" + cityname + ",RU&appid=bf4ee7b1e28b2bbea359e78e1ebbbd78";
+        String urlString = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityname + ",RU&appid=0507febdbdf6a636ec6bdcdfe0b909fc";
         WeatherModel model = null;
         HttpURLConnection urlConnection = null;
         try {
@@ -75,22 +84,36 @@ public class WeatherProvider {
         return model;
     }
 
+    private ArrayList<String> getDate(WeatherModel model) {
+        ArrayList<String> result = new ArrayList<>();
+        try {
+            for (int i = 0; i < model.getList().size(); i++) {
+                Date d = simpleDateFormat.parse(model.getList().get(i).getDtTxt());
+                int a = Integer.valueOf(hours.format(d));
+                result.add(String.valueOf(a));
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     private void startData() {
         timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                final WeatherModel model;
-                model = getWeather(City_changerPresenter.getInstance().getCityName());
-                if (model == null) {
+                //final WeatherModel model;
+                weatherModel = getWeather(City_changerPresenter.getInstance().getCityName());
+                dates = getDate(weatherModel);
+                if (weatherModel == null) {
                     City_changerPresenter.getInstance().setMistake(1);
                 }
-
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
                         for (WeatherProviderListener listener : listeners) {
-                            listener.updateWeather(model);
+                            listener.updateWeather(weatherModel, dates);
                         }
                     }
                 });
