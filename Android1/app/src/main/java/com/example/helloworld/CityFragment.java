@@ -56,14 +56,14 @@ public class CityFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 cityName.setText(city1.getText());
-                //City_changerPresenter.getInstance().setCityName(city1.getText().toString());
+                City_changerPresenter.getInstance().setCityName(city1.getText().toString());
             }
         });
         city2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cityName.setText(city2.getText());
-                //City_changerPresenter.getInstance().setCityName(city2.getText().toString());
+                City_changerPresenter.getInstance().setCityName(city2.getText().toString());
 
             }
         });
@@ -71,14 +71,14 @@ public class CityFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 cityName.setText(city3.getText());
-                //  City_changerPresenter.getInstance().setCityName(city3.getText().toString());
+                City_changerPresenter.getInstance().setCityName(city3.getText().toString());
             }
         });
         city4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cityName.setText(city4.getText());
-                // City_changerPresenter.getInstance().setCityName(city4.getText().toString());
+                City_changerPresenter.getInstance().setCityName(city4.getText().toString());
             }
         });
     }

@@ -1,5 +1,6 @@
 package com.example.helloworld;
 
+import android.app.Application;
 import android.os.Build;
 import android.os.Handler;
 
@@ -9,6 +10,8 @@ import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -71,8 +74,6 @@ public class WeatherProvider {
                 model = gson.fromJson(result, WeatherModel.class);
                 City_changerPresenter.getInstance().setMistake(0);
             }
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -103,11 +104,11 @@ public class WeatherProvider {
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                //final WeatherModel model;
                 weatherModel = getWeather(City_changerPresenter.getInstance().getCityName());
-                dates = getDate(weatherModel);
                 if (weatherModel == null) {
                     City_changerPresenter.getInstance().setMistake(1);
+                } else {
+                    dates = getDate(weatherModel);
                 }
                 handler.post(new Runnable() {
                     @Override
@@ -119,7 +120,7 @@ public class WeatherProvider {
                 });
 
             }
-        }, 2000, 1000);
+        }, 0, 2000);
     }
 
     void stop() {
@@ -127,5 +128,56 @@ public class WeatherProvider {
             timer.cancel();
         }
         listeners.clear();
+    }
+
+    public String tempInGradus(int numberofmodel) {
+        double temp = (weatherModel.getList().get(numberofmodel).getMain().getTemp() - 273.15);
+        double tempInCelvin = new BigDecimal(Double.toString(temp)).setScale(0, RoundingMode.HALF_UP).doubleValue();
+        return ((int) tempInCelvin) + "°";
+    }
+
+    public String[] tempMinToWeek() {
+        String[] result = new String[weatherModel.getList().size()];
+        int i = 0;
+        for (int j = 0; j < result.length; j += 8) {
+            result[i] = getMinTempToday(j);
+            i++;
+        }
+        return result;
+    }
+    private String getMinTempToday(int counter) {
+        double minTemp = 273.15;
+        double tempnow;
+        for (int i = counter; i < counter + 8; i++) {
+            tempnow = weatherModel.getList().get(i).getMain().getTempMin();
+            if (tempnow < minTemp)
+                minTemp = tempnow;
+        }
+        minTemp = minTemp - 273.15;
+        double tempInCelvin = new BigDecimal(Double.toString(minTemp)).setScale(0, RoundingMode.HALF_UP).doubleValue();
+        return ((int) tempInCelvin) + "°";
+    }
+
+    public String[] tempMaxToWeek() {
+        String[] result = new String[weatherModel.getList().size()];
+        int i = 0;
+        for (int j = 0; j < result.length; j += 8) {
+            result[i] = getMaxTempToday(j);
+            i++;
+        }
+        return result;
+    }
+
+    private String getMaxTempToday(int counter) {
+        double maxtemp = 273.15;
+        double tempnow;
+        for (int i = counter; i < counter + 8; i++) {
+            tempnow = weatherModel.getList().get(i).getMain().getTempMax();
+            if (tempnow > maxtemp)
+                maxtemp = tempnow;
+        }
+        maxtemp = maxtemp - 273.15;
+        double tempInCelvin = new BigDecimal(Double.toString(maxtemp)).setScale(0, RoundingMode.HALF_UP).doubleValue();
+        return ((int) tempInCelvin) + "°";
     }
 }
