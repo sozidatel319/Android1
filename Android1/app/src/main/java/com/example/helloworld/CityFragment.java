@@ -1,19 +1,17 @@
 package com.example.helloworld;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputEditText;
-
-import java.util.Objects;
-
 
 public class CityFragment extends Fragment {
     private TextView city1;
@@ -22,8 +20,32 @@ public class CityFragment extends Fragment {
     private TextView city4;
     private TextInputEditText cityName;
 
+    SharedPreferences sharedPreferences;
+
     public CityFragment() {
         // Required empty public constructor
+    }
+
+    private void saveSharedPReferences(SharedPreferences sharedPreferences) {
+        String[] keys = {Constants.CITY_NAME};
+        String[] values = {cityName.getText().toString()};
+        //SharedPreferences.Editor editor = sharedPreferences.edit();
+        //Log.d("Editor", String.valueOf(editor.hashCode()));
+        sharedPreferences.edit().clear();
+        sharedPreferences.edit().putString(keys[0], values[0]).commit();
+        //editor.clear();
+        //editor.commit();
+        //editor.putString(keys[0], values[0]);
+        //editor.commit();
+        Log.d("Shared", String.valueOf(sharedPreferences.hashCode()));
+    }
+
+    private void getnowSharedPreferences(SharedPreferences sharedPreferences) {
+        if (sharedPreferences != null) {
+            String[] keys = {Constants.CITY_NAME};
+            String valueFirst = sharedPreferences.getString(keys[0], "Москва");
+            cityName.setText(valueFirst);
+        }
     }
 
     @Override
@@ -41,6 +63,7 @@ public class CityFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+        saveSharedPReferences(sharedPreferences);
     }
 
     @Override
@@ -56,14 +79,14 @@ public class CityFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 cityName.setText(city1.getText());
-                //City_changerPresenter.getInstance().setCityName(city1.getText().toString());
+                City_changerPresenter.getInstance().setCityName(city1.getText().toString());
             }
         });
         city2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cityName.setText(city2.getText());
-                //City_changerPresenter.getInstance().setCityName(city2.getText().toString());
+                City_changerPresenter.getInstance().setCityName(city2.getText().toString());
 
             }
         });
@@ -71,17 +94,22 @@ public class CityFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 cityName.setText(city3.getText());
-                //  City_changerPresenter.getInstance().setCityName(city3.getText().toString());
+                City_changerPresenter.getInstance().setCityName(city3.getText().toString());
             }
         });
         city4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cityName.setText(city4.getText());
-                // City_changerPresenter.getInstance().setCityName(city4.getText().toString());
+                City_changerPresenter.getInstance().setCityName(city4.getText().toString());
             }
         });
+        sharedPreferences = getActivity().getSharedPreferences("now", Context.MODE_PRIVATE);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
+}
 

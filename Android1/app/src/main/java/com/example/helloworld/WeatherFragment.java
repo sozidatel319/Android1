@@ -11,9 +11,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.helloworld.model.WeatherModel;
 
-public class WeatherFragment extends Fragment {
+import java.util.ArrayList;
+import java.util.Objects;
 
+
+public class WeatherFragment extends Fragment implements WeatherProviderListener {
+    private RecyclerView recyclerView;
+    private String[] daysofweek;
+    private String[] mintemptoweek;
+    private String[] maxtempofweek;
 
     public WeatherFragment() {
         // Required empty public constructor
@@ -39,20 +47,35 @@ public class WeatherFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-       initRecyclerView();
+        WeatherProvider.getInstance().addListener(this);
+        initRecyclerView();
     }
 
-    private void initRecyclerView(){
+    @Override
+    public void onPause() {
+        super.onPause();
+        WeatherProvider.getInstance().removeListener(this);
+    }
 
-        RecyclerView recyclerView = getActivity().findViewById(R.id.recycler_view);
+    private void initRecyclerView() {
+        recyclerView = Objects.requireNonNull(getActivity()).findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
-        String[] daysofweek = getResources().getStringArray(R.array.daysofweek);
-
-        //  List<String> arrayList = new ArrayList<>(Arrays.asList(daysofweek));
-
-        recyclerView.setAdapter(new DaysOfWeekAdapter(daysofweek));
+        daysofweek = getResources().getStringArray(R.array.daysofweek);
+        mintemptoweek = new String[7];
+        mintemptoweek = new String[]{"--", "--", "--", "--", "--", "--", "--"};
+        maxtempofweek = mintemptoweek;
+        recyclerView.setAdapter(new DaysOfWeekAdapter(daysofweek, mintemptoweek, maxtempofweek));
     }
 
+    @Override
+    public void updateWeather(WeatherModel model, ArrayList<String> time) {
+        if (model != null) {
+            daysofweek = getResources().getStringArray(R.array.daysofweek);
+            mintemptoweek = WeatherProvider.getInstance().tempMinToWeek();
+            maxtempofweek = WeatherProvider.getInstance().tempMaxToWeek();
+            recyclerView.setAdapter(new DaysOfWeekAdapter(daysofweek, mintemptoweek, maxtempofweek));
+        }
+    }
 }

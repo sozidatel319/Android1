@@ -29,10 +29,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:hint="@string/enter_city_name"
-            android:textColor="@color/textColorPrimary"
+            android:hint="@string/enterCityName"
             android:inputType="textPersonName"
-            />
+            android:textColor="@color/textColorPrimary" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <fragment

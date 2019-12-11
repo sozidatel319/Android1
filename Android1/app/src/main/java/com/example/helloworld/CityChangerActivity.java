@@ -57,10 +57,10 @@ public class CityChangerActivity extends BaseActivity implements WeatherProvider
                 intent.putExtra(Constants.PRESSURE, "Давление в норме");
                 intent.putExtra(Constants.WIND_SPEED, "Ветер 5 м/с");
 
-               // City_changerPresenter.getInstance().setCityName(inputCityName.getText().toString());
+                // City_changerPresenter.getInstance().setCityName(inputCityName.getText().toString());
                 City_changerPresenter.getInstance().setInfoisChecked(info.isChecked());
                 if (isFirstOpened) {
-                   // City_changerPresenter.getInstance().setMistake(0);
+                    // City_changerPresenter.getInstance().setMistake(0);
                     City_changerPresenter.getInstance().setOpened(false);
 
                 }
@@ -126,6 +126,6 @@ public class CityChangerActivity extends BaseActivity implements WeatherProvider
 
     @Override
     public void updateWeather(WeatherModel model, ArrayList<String> time) {
-        City_changerPresenter.getInstance().setCityName(inputCityName.getText().toString());
+        City_changerPresenter.getInstance().setCityName(Objects.requireNonNull(inputCityName.getText()).toString());
     }
 }

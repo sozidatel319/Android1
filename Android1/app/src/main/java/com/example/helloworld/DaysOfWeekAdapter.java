@@ -11,9 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 public class DaysOfWeekAdapter extends RecyclerView.Adapter<DaysOfWeekAdapter.ViewHolder> {
 
     private String[] daysofweek;
+    private String[] mintempofweek;
+    private String[] maxtempofweek;
 
-    public DaysOfWeekAdapter(String data[]) {
-        daysofweek = data;
+    public DaysOfWeekAdapter(String[] daysofweek, String[] mintempofweek, String[] maxtempofweek) {
+        this.daysofweek = daysofweek;
+        this.mintempofweek = mintempofweek;
+        this.maxtempofweek = maxtempofweek;
     }
 
     @NonNull
@@ -25,6 +29,9 @@ public class DaysOfWeekAdapter extends RecyclerView.Adapter<DaysOfWeekAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.setLabel(daysofweek[position]);
+        holder.setMintemp(mintempofweek[position]);
+        holder.setMaxtemp(maxtempofweek[position]);
+
     }
 
     @Override
@@ -34,14 +41,27 @@ public class DaysOfWeekAdapter extends RecyclerView.Adapter<DaysOfWeekAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView label;
+        TextView mintemp;
+        TextView maxtemp;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             label = itemView.findViewById(R.id.label);
+            mintemp = itemView.findViewById(R.id.mintemp);
+            maxtemp = itemView.findViewById(R.id.maxtemp);
+
         }
 
         void setLabel(String text) {
             label.setText(text);
+        }
+
+        void setMintemp(String text) {
+            mintemp.setText(text);
+        }
+
+        void setMaxtemp(String text) {
+            maxtemp.setText(text);
         }
     }
 }
