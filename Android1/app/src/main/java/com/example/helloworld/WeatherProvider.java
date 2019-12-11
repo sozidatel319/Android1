@@ -1,6 +1,5 @@
 package com.example.helloworld;
 
-import android.app.Application;
 import android.os.Build;
 import android.os.Handler;
 
@@ -13,7 +12,6 @@ import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

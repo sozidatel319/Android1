@@ -3,7 +3,6 @@ package com.example.helloworld;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,7 +17,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity implements WeatherProviderListener {
     private String tag = "MainActivity";
-    TextView now;
+    TextView tempnow;
     TextView tempAfter3h;
     TextView tempAfter6h;
     TextView tempAfter9h;
@@ -51,7 +50,7 @@ public class MainActivity extends BaseActivity implements WeatherProviderListene
     private void init() {
 
         temperature = new ArrayList<>();
-        now = findViewById(R.id.now);
+        tempnow = findViewById(R.id.now);
         tempAfter3h = findViewById(R.id.temp3h);
         tempAfter6h = findViewById(R.id.temp6h);
         tempAfter9h = findViewById(R.id.temp9h);
@@ -62,7 +61,7 @@ public class MainActivity extends BaseActivity implements WeatherProviderListene
         tempAfter24h = findViewById(R.id.temp0);
         timenow = findViewById(R.id.today);
 
-        temperature.add(now);
+        temperature.add(tempnow);
         temperature.add(tempAfter3h);
         temperature.add(tempAfter6h);
         temperature.add(tempAfter9h);
@@ -110,7 +109,9 @@ public class MainActivity extends BaseActivity implements WeatherProviderListene
     @Override
     protected void onResume() {
         super.onResume();
-
+        Intent service = new Intent(this,WeatherService.class);
+        service.putExtra(Constants.CITY_NAME,City_changerPresenter.getInstance().getCityName());
+        startService(service);
 
         WeatherProvider.getInstance().addListener(this);
         if (City_changerPresenter.getInstance().getMistake() == 1) {
