@@ -16,6 +16,7 @@ import com.example.helloworld.model.WeatherModel;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -28,27 +29,27 @@ public class WeatherTodayFragment extends Fragment implements WeatherProviderLis
 
     SharedPreferences sharedPreferences;
 
-    public WeatherTodayFragment(){
+    public WeatherTodayFragment() {
 
     }
 
-    private void getnowSharedPreferences(SharedPreferences sharedPreferences){
-        if (sharedPreferences !=null){
+    private void getnowSharedPreferences(SharedPreferences sharedPreferences) {
+        if (sharedPreferences != null) {
             String[] keys = {Constants.CITY_NAME};
             String valueFirst = sharedPreferences.getString(keys[0], "Москва");
             cityName.setText(valueFirst);
         }
     }
 
-    private void saveSharedPReferences(SharedPreferences sharedPreferences){
+    private void saveSharedPReferences(SharedPreferences sharedPreferences) {
         String[] keys = {Constants.CITY_NAME};
         String[] values = {cityName.getText().toString()};
         //SharedPreferences.Editor editor =
-                sharedPreferences.edit().putString(keys[0], values[0]).commit();
-       // Log.d("Editor",String.valueOf(editor.hashCode()));
-       // editor.putString(keys[0], values[0]);
+        sharedPreferences.edit().putString(keys[0], values[0]).commit();
+        // Log.d("Editor",String.valueOf(editor.hashCode()));
+        // editor.putString(keys[0], values[0]);
         //editor.commit();
-        Log.d("Shared",String.valueOf(sharedPreferences.hashCode()));
+        Log.d("Shared", String.valueOf(sharedPreferences.hashCode()));
     }
 
     @Override
@@ -69,7 +70,7 @@ public class WeatherTodayFragment extends Fragment implements WeatherProviderLis
         temperature_of_day = getActivity().findViewById(R.id.temperatureOfDay);
         temperature_of_day.setText(!SettingsPresenter.getInstance().getUnitofmeasure() ? R.string.gradus_forengheit : R.string.forengheight);
         clouds = getActivity().findViewById(R.id.weather_type);
-        sharedPreferences = getActivity().getSharedPreferences("now",Context.MODE_PRIVATE);
+        sharedPreferences = getActivity().getSharedPreferences("now", Context.MODE_PRIVATE);
         getnowSharedPreferences(sharedPreferences);
 
         sharedPreferences.registerOnSharedPreferenceChangeListener(new SharedPreferences.OnSharedPreferenceChangeListener() {
@@ -84,7 +85,7 @@ public class WeatherTodayFragment extends Fragment implements WeatherProviderLis
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-       // sharedPreferences = getSharedP;
+        // sharedPreferences = getSharedP;
     }
 
     @Override
@@ -102,7 +103,7 @@ public class WeatherTodayFragment extends Fragment implements WeatherProviderLis
 
     private void restoreData(Bundle savedInstanceState) {
         if (savedInstanceState == null) return;
-       // cityName.setText(City_changerPresenter.getInstance().getCityName());
+        // cityName.setText(City_changerPresenter.getInstance().getCityName());
 
         if (City_changerPresenter.getInstance().getInfoisChecked()) {
             pressure.setVisibility(View.VISIBLE);
@@ -114,8 +115,9 @@ public class WeatherTodayFragment extends Fragment implements WeatherProviderLis
 
     @Override
     public void updateWeather(WeatherModel model, ArrayList<String> ti) {
+        // City_changerPresenter.getInstance().setCityName(Objects.requireNonNull(cityName.getText()).toString());
         if (model == null) {
-           Intent intent = new Intent(getActivity(),ErrorActivity.class);
+            Intent intent = new Intent(getActivity(), ErrorActivity.class);
             startActivity(intent);
             //cityName.setText("--");
             wind.setText("--");
@@ -123,8 +125,6 @@ public class WeatherTodayFragment extends Fragment implements WeatherProviderLis
             temperature_of_day.setText("--");
             clouds.setText("--");
         } else {
-
-            //cityName.setText(City_changerPresenter.getInstance().getCityName());
             double windSpeed = new BigDecimal(Double.toString(model.getList().get(0).getWind().getSpeed())).setScale(0, RoundingMode.HALF_UP).doubleValue();
             wind.setText("Ветер " + (int) windSpeed + " м/с");
             pressure.setText("Давление " + model.getList().get(0).getMain().getPressure());

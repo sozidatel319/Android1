@@ -2,22 +2,23 @@ package com.example.helloworld;
 
 import android.app.Service;
 import android.content.Intent;
-import android.os.Build;
 import android.os.IBinder;
 
 import androidx.annotation.Nullable;
 
+import com.example.helloworld.model.List;
 import com.example.helloworld.model.WeatherModel;
-import com.google.gson.Gson;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.stream.Collectors;
+import retrofit2.Call;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public class WeatherService extends Service {
+    WeatherModel model;
 
     @Override
     public int onStartCommand(@Nullable final Intent intent, int flags, int startId) {
@@ -25,8 +26,13 @@ public class WeatherService extends Service {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                model = null;
                 while (!Thread.interrupted()) {
-                    getWeather(intent.getStringExtra(Constants.CITY_NAME));
+                    try {
+                        model = getWeather(intent.getStringExtra(Constants.CITY_NAME));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     try {
                         Thread.sleep(10000);
                     } catch (InterruptedException e) {
@@ -38,31 +44,18 @@ public class WeatherService extends Service {
         return super.onStartCommand(intent, flags, startId);
     }
 
-    private WeatherModel getWeather(String cityname) {
-        String urlString = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityname + ",RU&appid=0507febdbdf6a636ec6bdcdfe0b909fc";
-        WeatherModel model = null;
-        HttpURLConnection urlConnection = null;
-        try {
-            URL url = new URL(urlString);
-            urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setRequestMethod("GET");
-            urlConnection.setConnectTimeout(1000);
-            BufferedReader in = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-            if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                final String result = in.lines().collect(Collectors.joining("\n"));
-                Gson gson = new Gson();
-                model = gson.fromJson(result, WeatherModel.class);
-                City_changerPresenter.getInstance().setMistake(0);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (urlConnection != null) {
-                urlConnection.disconnect();
-            }
-        }
+    interface OpenWeather {
+        @GET
+        Call<WeatherModel> getWeather(@Path("data/2.5/forecast") @Query("q") String q, @Query("appid") String key);
+    }
 
-        return model;
+    private WeatherModel getWeather(String cityname) throws Exception {
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://api.openweathermap.org").
+                addConverterFactory(GsonConverterFactory.create()).build();
+        Call <WeatherModel> call = retrofit.create(OpenWeather.class).getWeather(cityname + ",ru", "0507febdbdf6a636ec6bdcdfe0b909fc");
+        Response<WeatherModel> response = call.execute();
+        if (response.isSuccessful())return response.body();
+        else throw new Exception(response.errorBody().string(),null);
     }
 
     @Nullable
