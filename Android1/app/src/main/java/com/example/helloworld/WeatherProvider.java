@@ -1,18 +1,14 @@
 package com.example.helloworld;
 
-import android.os.Build;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 
 import com.example.helloworld.model.WeatherModel;
-import com.google.gson.Gson;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,7 +18,14 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.stream.Collectors;
+
+import retrofit2.Call;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
+import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public class WeatherProvider {
     private Set<WeatherProviderListener> listeners;
@@ -33,10 +36,25 @@ public class WeatherProvider {
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
     private WeatherModel weatherModel;
     private ArrayList<String> dates;
+    private Retrofit retrofit;
+    private OpenWeather weatherApi;
 
     public WeatherProvider() {
         listeners = new HashSet<>();
+        retrofit = new Retrofit.Builder().baseUrl("http://api.openweathermap.org").
+                addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(ScalarsConverterFactory.create()).build();
+        weatherApi = retrofit.create(OpenWeather.class);
         startData();
+    }
+
+    interface OpenWeather {
+        @GET("data/2.5/forecast")
+        Call<WeatherModel> getWeather(@Query("q") String q, @Query("appid") String key);
+    }
+
+    public WeatherModel getWeatherModel() {
+        return weatherModel;
     }
 
     public static WeatherProvider getInstance() {
@@ -56,7 +74,7 @@ public class WeatherProvider {
         }
     }
 
-    private WeatherModel getWeather(String cityname) {
+    /*private WeatherModel getWeather(String cityname) {
         String urlString = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityname + ",RU&appid=0507febdbdf6a636ec6bdcdfe0b909fc";
         WeatherModel model = null;
         HttpURLConnection urlConnection = null;
@@ -81,6 +99,14 @@ public class WeatherProvider {
         }
 
         return model;
+    }*/
+
+
+    private WeatherModel getWeather(String cityname) throws Exception {
+        Call<WeatherModel> call = weatherApi.getWeather(cityname + ",RU", "0507febdbdf6a636ec6bdcdfe0b909fc");
+        Response<WeatherModel> response = call.execute();
+        if (response.isSuccessful()) return response.body();
+        else throw new Exception(response.errorBody().string(), null);
     }
 
     private ArrayList<String> getDate(WeatherModel model) {
@@ -98,25 +124,26 @@ public class WeatherProvider {
     }
 
     private void startData() {
+
         timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                weatherModel = getWeather(City_changerPresenter.getInstance().getCityName());
-                if (weatherModel == null) {
-                    City_changerPresenter.getInstance().setMistake(1);
-                } else {
+                try {
+                    weatherModel = getWeather(City_changerPresenter.getInstance().getCityName());
+                    if (weatherModel == null) return;
                     dates = getDate(weatherModel);
-                }
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        for (WeatherProviderListener listener : listeners) {
-                            listener.updateWeather(weatherModel, dates);
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            for (WeatherProviderListener listener : listeners) {
+                                listener.updateWeather(weatherModel, dates);
+                            }
                         }
-                    }
-                });
-
+                    });
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }, 0, 2000);
     }
@@ -143,6 +170,7 @@ public class WeatherProvider {
         }
         return result;
     }
+
     private String getMinTempToday(int counter) {
         double minTemp = 273.15;
         double tempnow;

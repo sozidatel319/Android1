@@ -1,8 +1,10 @@
 package com.example.helloworld;
 
-public final class City_changerPresenter {
+import android.content.Context;
+import android.content.SharedPreferences;
 
-    private String cityName = "Moscow";
+public final class City_changerPresenter {
+    private String cityName = "Moscow"; ///TODO: Сделать инициализацию переменной из Shared Prederences
     private boolean infoisChecked;
     private String wind;
     private String pressure;
