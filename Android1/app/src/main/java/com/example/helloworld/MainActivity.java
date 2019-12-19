@@ -1,11 +1,14 @@
 package com.example.helloworld;
 
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.helloworld.model.WeatherModel;
+
 import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity implements WeatherProviderListener {
@@ -109,9 +113,9 @@ public class MainActivity extends BaseActivity implements WeatherProviderListene
     @Override
     protected void onResume() {
         super.onResume();
-        Intent service = new Intent(this,WeatherService.class);
-        service.putExtra(Constants.CITY_NAME,City_changerPresenter.getInstance().getCityName());
-        startService(service);
+        //Intent service = new Intent(this,WeatherService.class);
+        //service.putExtra(Constants.CITY_NAME,City_changerPresenter.getInstance().getCityName());
+        //startService(service);
 
         WeatherProvider.getInstance().addListener(this);
         if (City_changerPresenter.getInstance().getMistake() == 1) {

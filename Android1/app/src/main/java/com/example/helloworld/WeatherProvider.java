@@ -27,7 +27,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public class WeatherProvider {
+public class WeatherProvider{
     private Set<WeatherProviderListener> listeners;
     private Timer timer;
     private static WeatherProvider instance = null;

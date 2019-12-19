@@ -1,4 +1,4 @@
-package com.example.helloworld;
+package com.example.helloworld.fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.helloworld.City_changerPresenter;
+import com.example.helloworld.Constants;
+import com.example.helloworld.R;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class CityFragment extends Fragment {
@@ -45,6 +48,7 @@ public class CityFragment extends Fragment {
             String[] keys = {Constants.CITY_NAME};
             String valueFirst = sharedPreferences.getString(keys[0], "Москва");
             cityName.setText(valueFirst);
+            City_changerPresenter.getInstance().setCityName(valueFirst);
         }
     }
 
