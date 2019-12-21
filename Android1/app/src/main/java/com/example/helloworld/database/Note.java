@@ -7,6 +7,7 @@ public class Note {
     private String clouds;
     private String pressure;
     private String wind;
+    private String datenow;
 
     public String getPressure() {
         return pressure;
@@ -54,5 +55,13 @@ public class Note {
 
     public void setClouds(String clouds) {
         this.clouds = clouds;
+    }
+
+    public String getDatenow() {
+        return datenow;
+    }
+
+    public void setDatenow(String datenow) {
+        this.datenow = datenow;
     }
 }

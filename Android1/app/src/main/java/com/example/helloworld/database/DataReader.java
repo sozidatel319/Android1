@@ -15,7 +15,8 @@ public class DataReader implements Closeable {
             DataHelper.TEMPERATURE,
             DataHelper.CLOUDS,
             DataHelper.PRESSURE,
-            DataHelper.WIND
+            DataHelper.WIND,
+            DataHelper.DATE
     };
 
     public DataReader(SQLiteDatabase database) {
@@ -45,6 +46,7 @@ public class DataReader implements Closeable {
         note.setClouds(cursor.getString(3));
         note.setPressure(cursor.getString(4));
         note.setWind(cursor.getString(5));
+        note.setDatenow(cursor.getString(6));
         return note;
     }
 

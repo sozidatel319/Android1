@@ -34,7 +34,7 @@ public class DataSource implements Closeable {
         return reader;
     }
 
-    public Note add(String cityname, String temperature, String clouds, String pressure, String wind) {
+    public Note add(String cityname, String temperature, String clouds, String pressure, String wind, String date) {
         Note note = new Note();
         ContentValues values = new ContentValues();
         values.put(DataHelper.CITY_NAME, cityname);
@@ -42,15 +42,19 @@ public class DataSource implements Closeable {
         values.put(DataHelper.CLOUDS, clouds);
         values.put(DataHelper.PRESSURE, pressure);
         values.put(DataHelper.WIND, wind);
+        values.put(DataHelper.DATE, date);
         long id = database.insert(DataHelper.TABLE_NAME, null, values);
         note.setId(id);
         note.setCityname(cityname);
         note.setTemperature(temperature);
         note.setClouds(clouds);
+        note.setPressure(pressure);
+        note.setWind(wind);
+        note.setDatenow(date);
         return note;
     }
 
-    public void edit(Note note, String cityname, String temperature, String clouds, String pressure, String wind) {
+    public void edit(Note note, String cityname, String temperature, String clouds, String pressure, String wind, String date) {
 
         ContentValues values = new ContentValues();
         values.put(DataHelper.CITY_NAME, cityname);
@@ -59,6 +63,7 @@ public class DataSource implements Closeable {
         values.put(DataHelper.PRESSURE, pressure);
         values.put(DataHelper.WIND, wind);
         values.put(DataHelper.TABLE_ID, note.getId());
+        values.put(DataHelper.DATE, date);
         database.update(DataHelper.TABLE_NAME, values, DataHelper.TABLE_ID + "=" + note.getId(), null);
     }
 

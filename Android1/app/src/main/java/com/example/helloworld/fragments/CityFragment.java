@@ -34,13 +34,11 @@ public class CityFragment extends Fragment {
         String[] values = {cityName.getText().toString()};
         //SharedPreferences.Editor editor = sharedPreferences.edit();
         //Log.d("Editor", String.valueOf(editor.hashCode()));
-        sharedPreferences.edit().clear();
         sharedPreferences.edit().putString(keys[0], values[0]).commit();
         //editor.clear();
         //editor.commit();
         //editor.putString(keys[0], values[0]);
         //editor.commit();
-        Log.d("Shared", String.valueOf(sharedPreferences.hashCode()));
     }
 
     private void getnowSharedPreferences(SharedPreferences sharedPreferences) {

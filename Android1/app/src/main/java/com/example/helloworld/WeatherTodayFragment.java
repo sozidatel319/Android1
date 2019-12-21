@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -23,7 +24,10 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -33,7 +37,7 @@ public class WeatherTodayFragment extends Fragment implements WeatherProviderLis
     private TextView wind;
     private TextView temperature_of_day;
     private TextView clouds;
-    String tag = "frament_weather_today";
+    private TextView today;
 
     // private TextView test;
     SharedPreferences sharedPreferences;
@@ -78,6 +82,12 @@ public class WeatherTodayFragment extends Fragment implements WeatherProviderLis
         pressure = getActivity().findViewById(R.id.pressure);
         wind = getActivity().findViewById(R.id.wind);
         temperature_of_day = getActivity().findViewById(R.id.temperatureOfDay);
+        today = getActivity().findViewById(R.id.today);
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEEE", Locale.getDefault());
+        StringBuilder stringBuilder = new StringBuilder(simpleDateFormat.format(date));
+        String res = stringBuilder.substring(0, 1).toUpperCase() + stringBuilder.substring(1);
+        today.setText(res);
         temperature_of_day.setText(!SettingsPresenter.getInstance().getUnitofmeasure() ? R.string.gradus_forengheit : R.string.forengheight);
         clouds = getActivity().findViewById(R.id.weather_type);
         //test = getActivity().findViewById(R.id.test);
@@ -145,13 +155,14 @@ public class WeatherTodayFragment extends Fragment implements WeatherProviderLis
             clouds.setText("--");
         } else {
             if (city_in_db) {
-                //readFromDB();
+                readFromDB();
             } else {
                 double windSpeed = new BigDecimal(Double.toString(model.getList().get(0).getWind().getSpeed())).setScale(0, RoundingMode.HALF_UP).doubleValue();
                 wind.setText("Ветер " + (int) windSpeed + " м/с");
                 pressure.setText("Давление " + model.getList().get(0).getMain().getPressure());
                 temperature_of_day.setText(WeatherProvider.getInstance().tempInGradus(0) + " C");
                 clouds.setText("Облачность " + Integer.valueOf(model.getList().get(0).getClouds().getAll()));
+                //}
             }
         }
     }
@@ -170,13 +181,13 @@ public class WeatherTodayFragment extends Fragment implements WeatherProviderLis
             cityname = dataSource.getReader().getPosition(i).getCityname();
             if (cityname.equals(cityName.getText().toString())) {
                 dataSource.edit(dataReader.getPosition(i), cityName.getText().toString(), temperature_of_day.getText().toString(),
-                        clouds.getText().toString(), pressure.getText().toString(), wind.getText().toString());
+                        clouds.getText().toString(), pressure.getText().toString(), wind.getText().toString(), receiveDate());
                 break;
             }
         }
         if (cityname.isEmpty() || !cityname.equals(cityName.getText().toString())) {
             dataSource.add(cityName.getText().toString(), temperature_of_day.getText().toString(),
-                    clouds.getText().toString(), pressure.getText().toString(), wind.getText().toString());
+                    clouds.getText().toString(), pressure.getText().toString(), wind.getText().toString(), new Date().toString());
         }
         dataReader.refresh();
         try {
@@ -189,13 +200,14 @@ public class WeatherTodayFragment extends Fragment implements WeatherProviderLis
     public void readFromDB() {
         if (dataReader.getCount() > 0) {
             for (int i = 0; i < dataReader.getCount(); i++) {
-                if (dataReader.getPosition(i).getCityname().equals(cityName.getText().toString())) {
+                if (dataReader.getPosition(i).getCityname().equals(City_changerPresenter.getInstance().getCityName()) && dataReader.getPosition(i).getDatenow().equals(receiveDate())) {
                     temperature_of_day.setText(dataReader.getPosition(i).getTemperature());
                     clouds.setText(dataReader.getPosition(i).getClouds());
                     pressure.setText(dataReader.getPosition(i).getPressure());
                     wind.setText(dataReader.getPosition(i).getWind());
+                    city_in_db = true;
+                    break;
                 }
-                city_in_db = true;
             }
             //   test.setText(String.valueOf(dataReader.getPosition(0).getClouds()));
         }
@@ -238,5 +250,12 @@ public class WeatherTodayFragment extends Fragment implements WeatherProviderLis
         }
     }
 
+    private String receiveDate() {
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY", Locale.ENGLISH);
+        String da = sdf.format(date);
+        return sdf.format(date);
+    }
 
 }
+
