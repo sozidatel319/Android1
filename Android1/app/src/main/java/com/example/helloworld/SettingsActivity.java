@@ -3,22 +3,19 @@ package com.example.helloworld;
 import androidx.annotation.NonNull;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
-import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
 
 public class SettingsActivity extends BaseActivity {
     private Switch themecolor;
-    private Switch font_size;
     private Switch unit_of_measure;
-    private String tag = "SettingsActivity";
     boolean statusTheme;
 
     @Override
@@ -30,11 +27,9 @@ public class SettingsActivity extends BaseActivity {
         restoreData(savedInstanceState);
     }
 
-    private void init(){
+    private void init() {
         themecolor = findViewById(R.id.themecolor);
-        font_size = findViewById(R.id.fontsize);
         unit_of_measure = findViewById(R.id.unitofmeasure);
-
         themecolor.setChecked(isDarkTheme());
         themecolor.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -46,7 +41,6 @@ public class SettingsActivity extends BaseActivity {
             }
         });
 
-        font_size.setChecked(SettingsPresenter.getInstance().getFontsize());
         unit_of_measure.setChecked(SettingsPresenter.getInstance().getUnitofmeasure());
 
         findViewById(R.id.savesettings_button).setOnClickListener(new View.OnClickListener() {
@@ -61,15 +55,14 @@ public class SettingsActivity extends BaseActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
-
-                        SettingsPresenter.getInstance().setFontsize(font_size.isChecked());
                         SettingsPresenter.getInstance().setUnitofmeasure(unit_of_measure.isChecked());
 
                         if (themecolor.isChecked()) {
                         }
 
-                        intent.putExtra(Constants.FONTSIZE, font_size.isChecked());
-                        intent.putExtra(Constants.UNTIT_OF_MEASURE, unit_of_measure.isChecked());
+                        intent.putExtra(Constants.UNIT_OF_MEASURE_FAHRENHEIT, unit_of_measure.isChecked());
+                        intent.putExtra(Constants.THEME, themecolor.isChecked());
+                        SettingsPresenter.getInstance().setUnitofmeasure(unit_of_measure.isChecked());
 
                         setResult(RESULT_OK, intent);
                         finish();
@@ -85,10 +78,13 @@ public class SettingsActivity extends BaseActivity {
 
                             statusTheme = SettingsPresenter.getInstance().getThemecolor();
                             if (statusTheme) {
-                                if (themecolor.isChecked()){
+                                if (themecolor.isChecked()) {
                                     themecolor.setChecked(false);
-                                }else themecolor.setChecked(true);
+                                    isDarkTheme();
+                                } else themecolor.setChecked(true);
                             }
+                            SettingsPresenter.getInstance().setUnitofmeasure(false);
+                            unit_of_measure.setChecked(false);
 
                             Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
                             setResult(RESULT_CANCELED, intent);
@@ -107,7 +103,6 @@ public class SettingsActivity extends BaseActivity {
         if (savedInstanceState == null) return;
 
         themecolor.setChecked(isDarkTheme());
-        font_size.setChecked(SettingsPresenter.getInstance().getFontsize());
         unit_of_measure.setChecked(SettingsPresenter.getInstance().getUnitofmeasure());
     }
 
@@ -116,45 +111,32 @@ public class SettingsActivity extends BaseActivity {
         super.onSaveInstanceState(outState);
 
         SettingsPresenter.getInstance().setThemecolor(isDarkTheme());
-        SettingsPresenter.getInstance().setFontsize(font_size.isChecked());
         SettingsPresenter.getInstance().setUnitofmeasure(unit_of_measure.isChecked());
-
-        Log.d(tag, "onSaveIntstanceState");
-        Toast.makeText(getApplicationContext(), "onSaveIntstanceState_" + tag, Toast.LENGTH_LONG).show();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d(tag, "onStart");
-        Toast.makeText(getApplicationContext(), "onStart_" + tag, Toast.LENGTH_LONG).show();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d(tag, "onResume");
-        Toast.makeText(getApplicationContext(), "onResume_" + tag, Toast.LENGTH_LONG).show();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d(tag, "onPause");
-        Toast.makeText(getApplicationContext(), "onPause_" + tag, Toast.LENGTH_LONG).show();
+        PreferenceWrapper.getPreference(this).putBoolean(Constants.UNIT_OF_MEASURE_FAHRENHEIT, unit_of_measure.isChecked());
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d(tag, "onStop");
-        Toast.makeText(getApplicationContext(), "onStop_" + tag, Toast.LENGTH_LONG).show();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d(tag, "onDestroy");
-        Toast.makeText(getApplicationContext(), "onDestroy_" + tag, Toast.LENGTH_LONG).show();
     }
 }

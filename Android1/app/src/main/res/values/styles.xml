@@ -1,7 +1,6 @@
 <resources>
 
     <!-- Base application theme. -->
-    Theme.MaterialComponents.Light.DarkActionBar
     <style name="AppTheme" parent="@style/Theme.MaterialComponents.Light.DarkActionBar">
         <item name="android:colorPrimary">@color/MaterialLightBlue800</item>
         <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>

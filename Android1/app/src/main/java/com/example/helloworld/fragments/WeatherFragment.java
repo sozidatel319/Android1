@@ -13,10 +13,10 @@ import android.view.ViewGroup;
 
 import com.example.helloworld.DaysOfWeekAdapter;
 import com.example.helloworld.R;
+import com.example.helloworld.SettingsPresenter;
 import com.example.helloworld.WeatherProvider;
 import com.example.helloworld.WeatherProviderListener;
 import com.example.helloworld.model.WeatherModel;
-
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -66,9 +66,9 @@ public class WeatherFragment extends Fragment implements WeatherProviderListener
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
-        daysofweek = getResources().getStringArray(R.array.daysofweek);
-        mintemptoweek = new String[7];
-        mintemptoweek = new String[]{"--", "--", "--", "--", "--", "--", "--"};
+        daysofweek = WeatherProvider.getInstance().getDays();
+        mintemptoweek = new String[5];
+        mintemptoweek = new String[]{"--", "--", "--", "--", "--"};
         maxtempofweek = mintemptoweek;
         recyclerView.setAdapter(new DaysOfWeekAdapter(daysofweek, mintemptoweek, maxtempofweek));
     }
@@ -76,9 +76,14 @@ public class WeatherFragment extends Fragment implements WeatherProviderListener
     @Override
     public void updateWeather(WeatherModel model, ArrayList<String> time) {
         if (model != null) {
-            daysofweek = getResources().getStringArray(R.array.daysofweek);
-            mintemptoweek = WeatherProvider.getInstance().tempMinToWeek();
-            maxtempofweek = WeatherProvider.getInstance().tempMaxToWeek();
+            daysofweek = WeatherProvider.getInstance().getDays();
+            if (!SettingsPresenter.getInstance().getUnitofmeasure()) {
+                mintemptoweek = WeatherProvider.getInstance().tempMinToWeekInCelsius();
+                maxtempofweek = WeatherProvider.getInstance().tempMaxToWeekInCelsius();
+            }else {
+                mintemptoweek = WeatherProvider.getInstance().tempMinToWeekInFahrenheit();
+                maxtempofweek = WeatherProvider.getInstance().tempMaxToWeekInFahrenheit();
+            }
             recyclerView.setAdapter(new DaysOfWeekAdapter(daysofweek, mintemptoweek, maxtempofweek));
         }
     }

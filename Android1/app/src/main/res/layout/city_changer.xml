@@ -55,6 +55,22 @@
         android:textSize="14sp"
         tools:checked="false" />
 
+    <Switch
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:checked="false"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp"
+        android:splitTrack="false"
+        android:text="@string/location"
+        android:textAlignment="center"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="14sp"
+        tools:checked="false" />
+
+
     <Button
         android:id="@+id/savecity"
         android:layout_width="200dp"

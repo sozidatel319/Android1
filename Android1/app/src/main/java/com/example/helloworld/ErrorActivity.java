@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class ErrorActivity extends BaseActivity{
-    private Button error;
+    Button error;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

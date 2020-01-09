@@ -12,7 +12,8 @@ public class DataReader implements Closeable {
     private String [] allColumn = {
             DataHelper.TABLE_ID,
             DataHelper.CITY_NAME,
-            DataHelper.TEMPERATURE,
+            DataHelper.TEMPERATURE_TODAY_CEL,
+            DataHelper.TEMPERATURE_TODAY_FAR,
             DataHelper.CLOUDS,
             DataHelper.PRESSURE,
             DataHelper.WIND,
@@ -42,11 +43,12 @@ public class DataReader implements Closeable {
         Note note = new Note();
         note.setId(cursor.getLong(0));
         note.setCityname(cursor.getString(1));
-        note.setTemperature(cursor.getString(2));
-        note.setClouds(cursor.getString(3));
-        note.setPressure(cursor.getString(4));
-        note.setWind(cursor.getString(5));
-        note.setDatenow(cursor.getString(6));
+        note.setTemperature_today_cel(cursor.getString(2));
+        note.setTemperature_today_far(cursor.getString(3));
+        note.setClouds(cursor.getString(4));
+        note.setPressure(cursor.getString(5));
+        note.setWind(cursor.getString(6));
+        note.setDatenow(cursor.getString(7));
         return note;
     }
 

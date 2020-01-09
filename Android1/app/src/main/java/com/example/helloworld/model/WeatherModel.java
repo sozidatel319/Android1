@@ -34,6 +34,18 @@ public class WeatherModel {
     @SerializedName("dt")
     @Expose
     private Integer dt;
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    @SerializedName("city")
+    @Expose
+    private City city;
     //@SerializedName("sys")
     // @Expose
     // private Sys sys;

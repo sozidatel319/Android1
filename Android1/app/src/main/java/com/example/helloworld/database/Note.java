@@ -3,7 +3,8 @@ package com.example.helloworld.database;
 public class Note {
     private long id;
     private String cityname;
-    private String temperature;
+    private String temperature_today_cel;
+    private String temperature_today_far;
     private String clouds;
     private String pressure;
     private String wind;
@@ -41,12 +42,20 @@ public class Note {
         this.cityname = cityname;
     }
 
-    public String getTemperature() {
-        return temperature;
+    public String getTemperature_today_cel() {
+        return temperature_today_cel;
     }
 
-    public void setTemperature(String temperature) {
-        this.temperature = temperature;
+    public void setTemperature_today_cel(String temperature_today_cel) {
+        this.temperature_today_cel = temperature_today_cel;
+    }
+
+    public String getTemperature_today_far() {
+        return temperature_today_far;
+    }
+
+    public void setTemperature_today_far(String temperature_today_far) {
+        this.temperature_today_far = temperature_today_far;
     }
 
     public String getClouds() {

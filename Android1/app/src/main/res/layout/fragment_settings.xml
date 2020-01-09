@@ -20,15 +20,6 @@
         android:textSize="18sp" />
 
     <Switch
-        android:id="@+id/fontsize"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/font"
-        android:textAlignment="center"
-        android:textColor="@color/textColorPrimary"
-        android:textSize="18sp" />
-
-    <Switch
         android:id="@+id/unitofmeasure"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

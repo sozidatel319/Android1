@@ -12,10 +12,15 @@ public class Constants extends AppCompatActivity {
     public static final String PRESSURE = "pressure";
     public static final String WIND_SPEED = "windspeed";
     public static final String THEME = "theme";
+    public static final String LIGHT_THEME = "light_theme";
+    public static final String DARK_THEME = "dark_theme";
     public static final String FONTSIZE = "fontsize";
-    public static final String UNTIT_OF_MEASURE = "unitofmeasure";
+    public static final String UNIT_OF_MEASURE_FAHRENHEIT = "unitofmeasure";
+    public static final String USE_LOCATION = "use_location";
     public static final int CITYCHANGER_CODE = 7;
     public static final int SETTINGS_CODE = 90;
+    public static final String CELSIUS = "°C";
+    public static final String FAHRENHEIT = "°F";
 
     public static void logAndToast(String text, String tag){
         Activity activity = new Activity();
