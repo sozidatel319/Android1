@@ -1,4 +1,4 @@
-package com.example.helloworld;
+package com.example.helloworld.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,6 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.helloworld.DaysOfWeekAdapter;
+import com.example.helloworld.R;
+import com.example.helloworld.WeatherProvider;
+import com.example.helloworld.WeatherProviderListener;
 import com.example.helloworld.model.WeatherModel;
 
 import java.util.ArrayList;

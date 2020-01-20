@@ -45,8 +45,8 @@ public class WeatherService extends Service {
     }
 
     interface OpenWeather {
-        @GET
-        Call<WeatherModel> getWeather(@Path("data/2.5/forecast") @Query("q") String q, @Query("appid") String key);
+        @GET("data/2.5/forecast")
+        Call<WeatherModel> getWeather(@Query("q") String q, @Query("appid") String key);
     }
 
     private WeatherModel getWeather(String cityname) throws Exception {
