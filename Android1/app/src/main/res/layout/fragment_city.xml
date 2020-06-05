@@ -2,7 +2,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".CityFragment"
+    tools:context=".fragments.CityFragment"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:attr/colorPrimary"
@@ -28,7 +28,7 @@
         android:clickable="true"
         android:focusable="true"
         android:paddingTop="5dp"
-        android:text="@string/Essentuki"
+        android:text="@string/Yessentuki"
         android:textAlignment="center"
         android:textColor="@color/textColorPrimary"
         android:textSize="20sp" />

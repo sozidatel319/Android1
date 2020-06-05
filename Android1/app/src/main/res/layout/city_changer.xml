@@ -29,15 +29,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:hint="@string/enter_city_name"
-            android:textColor="@color/textColorPrimary"
+            android:hint="@string/enterCityName"
             android:inputType="textPersonName"
-            />
+            android:textColor="@color/textColorPrimary" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <fragment
         android:id="@+id/fragment"
-        android:name="com.example.helloworld.CityFragment"
+        android:name="com.mikhail.weatherclient.fragments.CityFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:layout="@layout/fragment_city" />
@@ -55,6 +54,22 @@
         android:textColor="@color/textColorPrimary"
         android:textSize="14sp"
         tools:checked="false" />
+
+    <Switch
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:checked="false"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp"
+        android:splitTrack="false"
+        android:text="@string/location"
+        android:textAlignment="center"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="14sp"
+        tools:checked="false" />
+
 
     <Button
         android:id="@+id/savecity"
